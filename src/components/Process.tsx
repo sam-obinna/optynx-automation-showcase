@@ -1,63 +1,121 @@
+import { Search, PenTool, Rocket, TrendingUp } from "lucide-react";
+
 const Process = () => {
   const steps = [
     {
       number: "01",
+      icon: Search,
       title: "Discovery",
-      description: "We analyze your workflows to identify automation opportunities and pain points."
+      description: "We analyze your workflows to identify automation opportunities and understand your unique challenges.",
+      gradient: "from-primary to-secondary",
     },
     {
       number: "02",
+      icon: PenTool,
       title: "Design",
-      description: "Custom automation blueprint tailored to your specific business requirements."
+      description: "We create a custom automation blueprint tailored to your specific business needs and goals.",
+      gradient: "from-secondary to-accent",
     },
     {
       number: "03",
+      icon: Rocket,
       title: "Implementation",
-      description: "Expert deployment with rigorous testing to ensure flawless operation."
+      description: "We build, test, and deploy your automation system with minimal disruption to your operations.",
+      gradient: "from-accent to-primary",
     },
     {
       number: "04",
+      icon: TrendingUp,
       title: "Optimization",
-      description: "Continuous monitoring and refinement to maximize efficiency and ROI."
-    }
+      description: "We monitor performance and continuously refine your automations for maximum efficiency.",
+      gradient: "from-primary via-secondary to-accent",
+    },
   ];
 
   return (
-    <section className="py-20 px-4 bg-background">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">Our Process</h2>
-        <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-          A proven approach to delivering automation excellence
-        </p>
+    <section className="py-24 px-4 bg-gradient-to-b from-muted/30 to-background relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
+      <div className="absolute top-1/3 right-20 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-float"></div>
+      
+      <div className="container mx-auto relative z-10">
+        <div className="text-center mb-20 animate-fade-in">
+          <div className="inline-block px-6 py-2 rounded-full backdrop-blur-xl bg-accent/10 border border-accent/20 mb-6">
+            <span className="text-sm font-semibold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              OUR PROCESS
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            How We{" "}
+            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+              Transform
+            </span>{" "}
+            Your Business
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            A proven methodology that delivers results every time
+          </p>
+        </div>
 
         <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-border" />
+          {/* Connecting Line */}
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-secondary to-accent transform -translate-x-1/2 rounded-full"></div>
 
-          {steps.map((step, index) => (
-            <div
-              key={step.number}
-              className={`relative mb-16 last:mb-0 animate-fade-in ${
-                index % 2 === 0 ? "md:pr-1/2 md:text-right" : "md:pl-1/2 md:ml-auto"
-              }`}
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              {/* Number Circle */}
-              <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl shadow-lg z-10">
-                {step.number}
-              </div>
+          <div className="space-y-16">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              const isEven = index % 2 === 0;
 
-              {/* Content */}
-              <div className={`ml-24 md:ml-0 ${index % 2 === 0 ? "md:mr-24" : "md:ml-24"}`}>
-                <div className="p-6 bg-card border border-border rounded-xl hover:shadow-lg transition-shadow">
-                  <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                  <p className="text-muted-foreground">{step.description}</p>
+              return (
+                <div
+                  key={index}
+                  className={`flex flex-col lg:flex-row items-center gap-8 ${
+                    isEven ? "lg:flex-row" : "lg:flex-row-reverse"
+                  } animate-slide-up`}
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  {/* Content */}
+                  <div className={`flex-1 ${isEven ? "lg:text-right" : "lg:text-left"}`}>
+                    <div className="backdrop-blur-xl bg-card/40 border border-border/50 rounded-3xl p-8 hover:scale-105 transition-all duration-500 hover:shadow-elevated group">
+                      <div className={`flex items-center gap-4 mb-6 ${isEven ? "lg:flex-row-reverse" : ""}`}>
+                        <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center text-3xl font-bold text-white shadow-glass group-hover:rotate-12 transition-transform duration-300`}>
+                          {step.number}
+                        </div>
+                        <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                          <Icon className="w-7 h-7 text-white" />
+                        </div>
+                      </div>
+                      <h3 className="text-3xl font-bold mb-4 group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary group-hover:bg-clip-text group-hover:text-transparent transition-all">
+                        {step.title}
+                      </h3>
+                      <p className="text-lg text-muted-foreground leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Center Icon */}
+                  <div className="hidden lg:block relative z-10">
+                    <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${step.gradient} shadow-glow`}></div>
+                  </div>
+
+                  {/* Spacer */}
+                  <div className="flex-1"></div>
                 </div>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
       </div>
+
+      <style>{`
+        .bg-grid-pattern {
+          background-image: 
+            linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+            linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+          background-size: 40px 40px;
+        }
+      `}</style>
     </section>
   );
 };

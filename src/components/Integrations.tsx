@@ -58,81 +58,134 @@ const Integrations = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-background overflow-hidden">
-      <div className="container mx-auto mb-12">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">Business Apps We Integrate</h2>
-        <p className="text-muted-foreground text-center max-w-2xl mx-auto">
-          Seamlessly connect your favorite tools and platforms
+    <section className="py-24 px-4 bg-gradient-to-b from-background to-muted/30 overflow-hidden relative">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[120px]"></div>
+      
+      <div className="container mx-auto mb-16 relative z-10">
+        <div className="inline-block px-6 py-2 rounded-full backdrop-blur-xl bg-primary/10 border border-primary/20 mb-6">
+          <span className="text-sm font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            INTEGRATIONS
+          </span>
+        </div>
+        <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          Business Apps{" "}
+          <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            We Integrate
+          </span>
+        </h2>
+        <p className="text-muted-foreground text-xl max-w-2xl">
+          Seamlessly connect your favorite tools and platforms with our powerful automation solutions
         </p>
       </div>
 
-      <div className="space-y-8">
-        {/* Row 1 */}
-        <div className="flex gap-6 animate-scroll-slow">
-          {[...row1, ...row1, ...row1].map((app, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-3 px-6 py-4 bg-card border border-border rounded-lg whitespace-nowrap hover:scale-110 transition-transform flex-shrink-0"
-            >
-              <img src={app.logo} alt={app.name} className="h-8 w-8 object-contain" />
-              <span className="font-medium text-lg">{app.name}</span>
-            </div>
-          ))}
+      <div className="space-y-8 relative z-10">
+        {/* Row 1 - Left to Right */}
+        <div className="relative overflow-hidden">
+          <div className="flex gap-6 animate-seamless-scroll-1">
+            {[...Array(3)].map((_, setIndex) => (
+              <div key={setIndex} className="flex gap-6 shrink-0">
+                {row1.map((app, i) => (
+                  <div
+                    key={`${setIndex}-${i}`}
+                    className="flex items-center gap-4 px-8 py-5 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0 group"
+                  >
+                    <img src={app.logo} alt={app.name} className="h-10 w-10 object-contain group-hover:scale-110 transition-transform" />
+                    <span className="font-semibold text-lg text-foreground">{app.name}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Row 2 - Reverse */}
-        <div className="flex gap-6 animate-scroll-slow-reverse">
-          {[...row2, ...row2, ...row2].map((app, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-3 px-6 py-4 bg-card border border-border rounded-lg whitespace-nowrap hover:scale-110 transition-transform flex-shrink-0"
-            >
-              <img src={app.logo} alt={app.name} className="h-8 w-8 object-contain" />
-              <span className="font-medium text-lg">{app.name}</span>
-            </div>
-          ))}
+        {/* Row 2 - Right to Left */}
+        <div className="relative overflow-hidden">
+          <div className="flex gap-6 animate-seamless-scroll-reverse">
+            {[...Array(3)].map((_, setIndex) => (
+              <div key={setIndex} className="flex gap-6 shrink-0">
+                {row2.map((app, i) => (
+                  <div
+                    key={`${setIndex}-${i}`}
+                    className="flex items-center gap-4 px-8 py-5 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0 group"
+                  >
+                    <img src={app.logo} alt={app.name} className="h-10 w-10 object-contain group-hover:scale-110 transition-transform" />
+                    <span className="font-semibold text-lg text-foreground">{app.name}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Row 3 */}
-        <div className="flex gap-6 animate-scroll-slow">
-          {[...row3, ...row3, ...row3].map((app, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-3 px-6 py-4 bg-card border border-border rounded-lg whitespace-nowrap hover:scale-110 transition-transform flex-shrink-0"
-            >
-              <img src={app.logo} alt={app.name} className="h-8 w-8 object-contain" />
-              <span className="font-medium text-lg">{app.name}</span>
-            </div>
-          ))}
+        {/* Row 3 - Left to Right */}
+        <div className="relative overflow-hidden">
+          <div className="flex gap-6 animate-seamless-scroll-2">
+            {[...Array(3)].map((_, setIndex) => (
+              <div key={setIndex} className="flex gap-6 shrink-0">
+                {row3.map((app, i) => (
+                  <div
+                    key={`${setIndex}-${i}`}
+                    className="flex items-center gap-4 px-8 py-5 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0 group"
+                  >
+                    <img src={app.logo} alt={app.name} className="h-10 w-10 object-contain group-hover:scale-110 transition-transform" />
+                    <span className="font-semibold text-lg text-foreground">{app.name}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       <style>{`
-        @keyframes scroll-slow {
+        @keyframes seamless-scroll-1 {
           0% {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-33.333%);
+            transform: translateX(calc(-100% / 3));
           }
         }
-        @keyframes scroll-slow-reverse {
+        @keyframes seamless-scroll-2 {
           0% {
-            transform: translateX(-33.333%);
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-100% / 3));
+          }
+        }
+        @keyframes seamless-scroll-reverse {
+          0% {
+            transform: translateX(calc(-100% / 3));
           }
           100% {
             transform: translateX(0);
           }
         }
-        .animate-scroll-slow {
-          animation: scroll-slow 40s linear infinite;
+        .animate-seamless-scroll-1 {
+          animation: seamless-scroll-1 45s linear infinite;
+          width: max-content;
         }
-        .animate-scroll-slow-reverse {
-          animation: scroll-slow-reverse 40s linear infinite;
+        .animate-seamless-scroll-2 {
+          animation: seamless-scroll-2 50s linear infinite;
+          width: max-content;
         }
-        .animate-scroll-slow:hover,
-        .animate-scroll-slow-reverse:hover {
+        .animate-seamless-scroll-reverse {
+          animation: seamless-scroll-reverse 48s linear infinite;
+          width: max-content;
+        }
+        .animate-seamless-scroll-1:hover,
+        .animate-seamless-scroll-2:hover,
+        .animate-seamless-scroll-reverse:hover {
           animation-play-state: paused;
+        }
+        .bg-grid-pattern {
+          background-image: 
+            linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+            linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+          background-size: 40px 40px;
         }
       `}</style>
     </section>

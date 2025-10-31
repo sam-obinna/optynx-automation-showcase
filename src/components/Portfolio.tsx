@@ -77,7 +77,8 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="py-20 px-4 bg-muted/30">
+    <section id="portfolio" className="py-24 px-4 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
       <div className="container mx-auto">
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">Our Work</h2>
         <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">

@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 
 const CTA = () => {
   return (
-    <section id="contact" className="py-20 px-4 bg-gradient-to-br from-primary to-primary-dark text-white relative overflow-hidden">
+    <section id="contact" className="py-24 px-4 bg-gradient-to-br from-primary via-secondary to-accent text-white relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl animate-pulse" />
