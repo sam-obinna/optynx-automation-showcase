@@ -1,16 +1,24 @@
 import { Star } from "lucide-react";
 import { Button } from "./ui/button";
+import zapierLogo from "@/assets/tech/zapier.svg";
+import makeLogo from "@/assets/tech/make.svg";
+import n8nLogo from "@/assets/tech/n8n.svg";
+import airtableLogo from "@/assets/tech/airtable.svg";
+import softrLogo from "@/assets/tech/softr.svg";
+import mondayLogo from "@/assets/tech/monday.svg";
+import shopifyLogo from "@/assets/tech/shopify.svg";
+import stripeLogo from "@/assets/tech/stripe-ar21.svg";
 
 const Hero = () => {
   const techIcons = [
-    { name: "Zapier", emoji: "⚡" },
-    { name: "Make", emoji: "🔧" },
-    { name: "N8N", emoji: "🔄" },
-    { name: "Airtable", emoji: "📊" },
-    { name: "Softr", emoji: "🎯" },
-    { name: "Monday", emoji: "📅" },
-    { name: "Shopify", emoji: "🛍️" },
-    { name: "Stripe", emoji: "💳" },
+    { name: "Zapier", logo: zapierLogo },
+    { name: "Make", logo: makeLogo },
+    { name: "N8N", logo: n8nLogo },
+    { name: "Airtable", logo: airtableLogo },
+    { name: "Softr", logo: softrLogo },
+    { name: "Monday", logo: mondayLogo },
+    { name: "Shopify", logo: shopifyLogo },
+    { name: "Stripe", logo: stripeLogo },
   ];
 
   return (
@@ -52,7 +60,7 @@ const Hero = () => {
                 key={i}
                 className="flex items-center gap-2 px-6 py-3 bg-card border border-border rounded-lg whitespace-nowrap hover:scale-110 transition-transform"
               >
-                <span className="text-2xl">{tech.emoji}</span>
+                <img src={tech.logo} alt={tech.name} className="h-6 w-6 object-contain" />
                 <span className="font-medium">{tech.name}</span>
               </div>
             ))}

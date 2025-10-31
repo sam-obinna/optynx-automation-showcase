@@ -1,35 +1,60 @@
+import mondayLogo from "@/assets/tech/monday.svg";
+import airtableLogo from "@/assets/tech/airtable.svg";
+import gdocsLogo from "@/assets/tech/gdocs.svg";
+import gdriveLogo from "@/assets/tech/gdrive.svg";
+import gcalendarLogo from "@/assets/tech/gcalendar.svg";
+import slackLogo from "@/assets/tech/slack.svg";
+import trelloLogo from "@/assets/tech/trello.svg";
+import asanaLogo from "@/assets/tech/asana.svg";
+import hubspotLogo from "@/assets/tech/hubspot.svg";
+import salesforceLogo from "@/assets/tech/salesforce.svg";
+import shopifyLogo from "@/assets/tech/shopify.svg";
+import mailchimpLogo from "@/assets/tech/mailchimp.svg";
+import zendeskLogo from "@/assets/tech/zendesk.svg";
+import quickbooksLogo from "@/assets/tech/quickbooks.svg";
+import xeroLogo from "@/assets/tech/xero.svg";
+import stripeLogo from "@/assets/tech/stripe-ar21.svg";
+import twilioLogo from "@/assets/tech/twilio-icon.svg";
+import docusignLogo from "@/assets/tech/docusign.svg";
+import canvaLogo from "@/assets/tech/canva-icon.svg";
+import zoomLogo from "@/assets/tech/zoomus-icon.svg";
+import pipedriveLogo from "@/assets/tech/pipedrive-svgrepo-com.svg";
+import tableauLogo from "@/assets/tech/tableau-software.svg";
+import jiraLogo from "@/assets/tech/jira-1.svg";
+import dropboxLogo from "@/assets/tech/dropbox-2.svg";
+
 const Integrations = () => {
   const row1 = [
-    { name: "Monday", emoji: "📅" },
-    { name: "Airtable", emoji: "📊" },
-    { name: "Google Docs", emoji: "📄" },
-    { name: "Google Drive", emoji: "💾" },
-    { name: "Google Calendar", emoji: "📆" },
-    { name: "Slack", emoji: "💬" },
-    { name: "Trello", emoji: "📋" },
-    { name: "Asana", emoji: "✅" },
+    { name: "Monday", logo: mondayLogo },
+    { name: "Airtable", logo: airtableLogo },
+    { name: "Google Docs", logo: gdocsLogo },
+    { name: "Google Drive", logo: gdriveLogo },
+    { name: "Google Calendar", logo: gcalendarLogo },
+    { name: "Slack", logo: slackLogo },
+    { name: "Trello", logo: trelloLogo },
+    { name: "Asana", logo: asanaLogo },
   ];
 
   const row2 = [
-    { name: "HubSpot", emoji: "🎯" },
-    { name: "Salesforce", emoji: "☁️" },
-    { name: "Shopify", emoji: "🛍️" },
-    { name: "Mailchimp", emoji: "📧" },
-    { name: "Zendesk", emoji: "🎧" },
-    { name: "QuickBooks", emoji: "💰" },
-    { name: "Xero", emoji: "💳" },
-    { name: "Stripe", emoji: "💵" },
+    { name: "HubSpot", logo: hubspotLogo },
+    { name: "Salesforce", logo: salesforceLogo },
+    { name: "Shopify", logo: shopifyLogo },
+    { name: "Mailchimp", logo: mailchimpLogo },
+    { name: "Zendesk", logo: zendeskLogo },
+    { name: "QuickBooks", logo: quickbooksLogo },
+    { name: "Xero", logo: xeroLogo },
+    { name: "Stripe", logo: stripeLogo },
   ];
 
   const row3 = [
-    { name: "Twilio", emoji: "📱" },
-    { name: "DocuSign", emoji: "✍️" },
-    { name: "Canva", emoji: "🎨" },
-    { name: "Zoom", emoji: "📹" },
-    { name: "Pipedrive", emoji: "📈" },
-    { name: "Tableau", emoji: "📊" },
-    { name: "Jira", emoji: "🐛" },
-    { name: "Dropbox", emoji: "📦" },
+    { name: "Twilio", logo: twilioLogo },
+    { name: "DocuSign", logo: docusignLogo },
+    { name: "Canva", logo: canvaLogo },
+    { name: "Zoom", logo: zoomLogo },
+    { name: "Pipedrive", logo: pipedriveLogo },
+    { name: "Tableau", logo: tableauLogo },
+    { name: "Jira", logo: jiraLogo },
+    { name: "Dropbox", logo: dropboxLogo },
   ];
 
   return (
@@ -49,7 +74,7 @@ const Integrations = () => {
               key={i}
               className="flex items-center gap-3 px-6 py-4 bg-card border border-border rounded-lg whitespace-nowrap hover:scale-110 transition-transform flex-shrink-0"
             >
-              <span className="text-3xl">{app.emoji}</span>
+              <img src={app.logo} alt={app.name} className="h-8 w-8 object-contain" />
               <span className="font-medium text-lg">{app.name}</span>
             </div>
           ))}
@@ -62,7 +87,7 @@ const Integrations = () => {
               key={i}
               className="flex items-center gap-3 px-6 py-4 bg-card border border-border rounded-lg whitespace-nowrap hover:scale-110 transition-transform flex-shrink-0"
             >
-              <span className="text-3xl">{app.emoji}</span>
+              <img src={app.logo} alt={app.name} className="h-8 w-8 object-contain" />
               <span className="font-medium text-lg">{app.name}</span>
             </div>
           ))}
@@ -75,7 +100,7 @@ const Integrations = () => {
               key={i}
               className="flex items-center gap-3 px-6 py-4 bg-card border border-border rounded-lg whitespace-nowrap hover:scale-110 transition-transform flex-shrink-0"
             >
-              <span className="text-3xl">{app.emoji}</span>
+              <img src={app.logo} alt={app.name} className="h-8 w-8 object-contain" />
               <span className="font-medium text-lg">{app.name}</span>
             </div>
           ))}

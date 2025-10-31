@@ -1,11 +1,18 @@
+import zapierLogo from "@/assets/tech/zapier.svg";
+import makeLogo from "@/assets/tech/make.svg";
+import n8nLogo from "@/assets/tech/n8n.svg";
+import airtableLogo from "@/assets/tech/airtable.svg";
+import softrLogo from "@/assets/tech/softr.svg";
+import leadsimpleLogo from "@/assets/tech/leadsimple.jpg";
+
 const About = () => {
   const platforms = [
-    { name: "Zapier", emoji: "⚡" },
-    { name: "Make.com", emoji: "🔧" },
-    { name: "N8N", emoji: "🔄" },
-    { name: "Airtable", emoji: "📊" },
-    { name: "Softr", emoji: "🎯" },
-    { name: "LeadSimple", emoji: "📈" },
+    { name: "Zapier", logo: zapierLogo },
+    { name: "Make.com", logo: makeLogo },
+    { name: "N8N", logo: n8nLogo },
+    { name: "Airtable", logo: airtableLogo },
+    { name: "Softr", logo: softrLogo },
+    { name: "LeadSimple", logo: leadsimpleLogo },
   ];
 
   return (
@@ -24,7 +31,11 @@ const About = () => {
               className="flex flex-col items-center justify-center p-6 bg-card border border-border rounded-xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-fade-in group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <span className="text-4xl mb-3 group-hover:scale-125 transition-transform">{platform.emoji}</span>
+              <img 
+                src={platform.logo} 
+                alt={platform.name}
+                className="h-12 w-12 mb-3 object-contain group-hover:scale-125 transition-transform"
+              />
               <span className="text-sm font-medium text-center">{platform.name}</span>
             </div>
           ))}
