@@ -1,60 +1,42 @@
-import mondayLogo from "@/assets/tech/monday.svg";
-import airtableLogo from "@/assets/tech/airtable.svg";
-import gdocsLogo from "@/assets/tech/gdocs.svg";
-import gdriveLogo from "@/assets/tech/gdrive.svg";
-import gcalendarLogo from "@/assets/tech/gcalendar.svg";
-import slackLogo from "@/assets/tech/slack.svg";
-import trelloLogo from "@/assets/tech/trello.svg";
-import asanaLogo from "@/assets/tech/asana.svg";
-import hubspotLogo from "@/assets/tech/hubspot.svg";
-import salesforceLogo from "@/assets/tech/salesforce.svg";
-import shopifyLogo from "@/assets/tech/shopify.svg";
-import mailchimpLogo from "@/assets/tech/mailchimp.svg";
-import zendeskLogo from "@/assets/tech/zendesk.svg";
-import quickbooksLogo from "@/assets/tech/quickbooks.svg";
-import xeroLogo from "@/assets/tech/xero.svg";
-import stripeLogo from "@/assets/tech/stripe-ar21.svg";
-import twilioLogo from "@/assets/tech/twilio-icon.svg";
-import docusignLogo from "@/assets/tech/docusign.svg";
-import canvaLogo from "@/assets/tech/canva-icon.svg";
-import zoomLogo from "@/assets/tech/zoomus-icon.svg";
-import pipedriveLogo from "@/assets/tech/pipedrive-svgrepo-com.svg";
-import tableauLogo from "@/assets/tech/tableau-software.svg";
-import jiraLogo from "@/assets/tech/jira-1.svg";
-import dropboxLogo from "@/assets/tech/dropbox-2.svg";
+import { 
+  Workflow, Database, Calendar, ShoppingCart,
+  FileText, HardDrive, MessageSquare, CheckSquare, BarChart,
+  Mail, Phone, FileSignature, Palette, Video, TrendingUp,
+  DollarSign, Briefcase, Cloud
+} from "lucide-react";
 
 const Integrations = () => {
   const row1 = [
-    { name: "Monday", logo: mondayLogo },
-    { name: "Airtable", logo: airtableLogo },
-    { name: "Google Docs", logo: gdocsLogo },
-    { name: "Google Drive", logo: gdriveLogo },
-    { name: "Google Calendar", logo: gcalendarLogo },
-    { name: "Slack", logo: slackLogo },
-    { name: "Trello", logo: trelloLogo },
-    { name: "Asana", logo: asanaLogo },
+    { name: "Monday", icon: Calendar },
+    { name: "Airtable", icon: Database },
+    { name: "Google Docs", icon: FileText },
+    { name: "Google Drive", icon: HardDrive },
+    { name: "Google Calendar", icon: Calendar },
+    { name: "Slack", icon: MessageSquare },
+    { name: "Trello", icon: CheckSquare },
+    { name: "Asana", icon: CheckSquare },
   ];
 
   const row2 = [
-    { name: "HubSpot", logo: hubspotLogo },
-    { name: "Salesforce", logo: salesforceLogo },
-    { name: "Shopify", logo: shopifyLogo },
-    { name: "Mailchimp", logo: mailchimpLogo },
-    { name: "Zendesk", logo: zendeskLogo },
-    { name: "QuickBooks", logo: quickbooksLogo },
-    { name: "Xero", logo: xeroLogo },
-    { name: "Stripe", logo: stripeLogo },
+    { name: "HubSpot", icon: TrendingUp },
+    { name: "Salesforce", icon: Briefcase },
+    { name: "Shopify", icon: ShoppingCart },
+    { name: "Mailchimp", icon: Mail },
+    { name: "Zendesk", icon: MessageSquare },
+    { name: "QuickBooks", icon: DollarSign },
+    { name: "Xero", icon: DollarSign },
+    { name: "Stripe", icon: DollarSign },
   ];
 
   const row3 = [
-    { name: "Twilio", logo: twilioLogo },
-    { name: "DocuSign", logo: docusignLogo },
-    { name: "Canva", logo: canvaLogo },
-    { name: "Zoom", logo: zoomLogo },
-    { name: "Pipedrive", logo: pipedriveLogo },
-    { name: "Tableau", logo: tableauLogo },
-    { name: "Jira", logo: jiraLogo },
-    { name: "Dropbox", logo: dropboxLogo },
+    { name: "Twilio", icon: Phone },
+    { name: "DocuSign", icon: FileSignature },
+    { name: "Canva", icon: Palette },
+    { name: "Zoom", icon: Video },
+    { name: "Pipedrive", icon: TrendingUp },
+    { name: "Tableau", icon: BarChart },
+    { name: "Jira", icon: CheckSquare },
+    { name: "Dropbox", icon: Cloud },
   ];
 
   return (
@@ -86,15 +68,18 @@ const Integrations = () => {
           <div className="flex gap-6 animate-seamless-scroll-1">
             {[...Array(3)].map((_, setIndex) => (
               <div key={setIndex} className="flex gap-6 shrink-0">
-                {row1.map((app, i) => (
-                  <div
-                    key={`${setIndex}-${i}`}
-                    className="flex items-center gap-4 px-8 py-5 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0 group"
-                  >
-                    <img src={app.logo} alt={app.name} className="h-10 w-10 object-contain group-hover:scale-110 transition-transform" />
-                    <span className="font-semibold text-lg text-foreground">{app.name}</span>
-                  </div>
-                ))}
+                {row1.map((app, i) => {
+                  const Icon = app.icon;
+                  return (
+                    <div
+                      key={`${setIndex}-${i}`}
+                      className="flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0"
+                    >
+                      <Icon className="h-7 w-7 text-primary" />
+                      <span className="font-semibold text-foreground">{app.name}</span>
+                    </div>
+                  );
+                })}
               </div>
             ))}
           </div>
@@ -102,37 +87,43 @@ const Integrations = () => {
 
         {/* Row 2 - Right to Left */}
         <div className="relative overflow-hidden">
-          <div className="flex gap-6 animate-seamless-scroll-reverse">
+          <div className="flex gap-6 animate-seamless-scroll-2">
             {[...Array(3)].map((_, setIndex) => (
               <div key={setIndex} className="flex gap-6 shrink-0">
-                {row2.map((app, i) => (
-                  <div
-                    key={`${setIndex}-${i}`}
-                    className="flex items-center gap-4 px-8 py-5 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0 group"
-                  >
-                    <img src={app.logo} alt={app.name} className="h-10 w-10 object-contain group-hover:scale-110 transition-transform" />
-                    <span className="font-semibold text-lg text-foreground">{app.name}</span>
-                  </div>
-                ))}
+                {row2.map((app, i) => {
+                  const Icon = app.icon;
+                  return (
+                    <div
+                      key={`${setIndex}-${i}`}
+                      className="flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0"
+                    >
+                      <Icon className="h-7 w-7 text-primary" />
+                      <span className="font-semibold text-foreground">{app.name}</span>
+                    </div>
+                  );
+                })}
               </div>
             ))}
           </div>
         </div>
 
-        {/* Row 3 - Left to Right */}
+        {/* Row 3 - Left to Right (Faster) */}
         <div className="relative overflow-hidden">
-          <div className="flex gap-6 animate-seamless-scroll-2">
+          <div className="flex gap-6 animate-seamless-scroll-reverse">
             {[...Array(3)].map((_, setIndex) => (
               <div key={setIndex} className="flex gap-6 shrink-0">
-                {row3.map((app, i) => (
-                  <div
-                    key={`${setIndex}-${i}`}
-                    className="flex items-center gap-4 px-8 py-5 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0 group"
-                  >
-                    <img src={app.logo} alt={app.name} className="h-10 w-10 object-contain group-hover:scale-110 transition-transform" />
-                    <span className="font-semibold text-lg text-foreground">{app.name}</span>
-                  </div>
-                ))}
+                {row3.map((app, i) => {
+                  const Icon = app.icon;
+                  return (
+                    <div
+                      key={`${setIndex}-${i}`}
+                      className="flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0"
+                    >
+                      <Icon className="h-7 w-7 text-primary" />
+                      <span className="font-semibold text-foreground">{app.name}</span>
+                    </div>
+                  );
+                })}
               </div>
             ))}
           </div>
@@ -148,6 +139,14 @@ const Integrations = () => {
             transform: translateX(calc(-100% / 3));
           }
         }
+        .animate-seamless-scroll-1 {
+          animation: seamless-scroll-1 40s linear infinite;
+          width: max-content;
+        }
+        .animate-seamless-scroll-1:hover {
+          animation-play-state: paused;
+        }
+
         @keyframes seamless-scroll-2 {
           0% {
             transform: translateX(0);
@@ -156,6 +155,14 @@ const Integrations = () => {
             transform: translateX(calc(-100% / 3));
           }
         }
+        .animate-seamless-scroll-2 {
+          animation: seamless-scroll-2 35s linear infinite;
+          width: max-content;
+        }
+        .animate-seamless-scroll-2:hover {
+          animation-play-state: paused;
+        }
+
         @keyframes seamless-scroll-reverse {
           0% {
             transform: translateX(calc(-100% / 3));
@@ -164,23 +171,14 @@ const Integrations = () => {
             transform: translateX(0);
           }
         }
-        .animate-seamless-scroll-1 {
-          animation: seamless-scroll-1 45s linear infinite;
-          width: max-content;
-        }
-        .animate-seamless-scroll-2 {
-          animation: seamless-scroll-2 50s linear infinite;
-          width: max-content;
-        }
         .animate-seamless-scroll-reverse {
-          animation: seamless-scroll-reverse 48s linear infinite;
+          animation: seamless-scroll-reverse 30s linear infinite;
           width: max-content;
         }
-        .animate-seamless-scroll-1:hover,
-        .animate-seamless-scroll-2:hover,
         .animate-seamless-scroll-reverse:hover {
           animation-play-state: paused;
         }
+
         .bg-grid-pattern {
           background-image: 
             linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
