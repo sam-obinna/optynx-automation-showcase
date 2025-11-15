@@ -1,24 +1,16 @@
-import { Star, TrendingUp, Clock, Zap } from "lucide-react";
+import { Star, TrendingUp, Clock, Zap, Workflow, Database, Mail, Calendar, ShoppingCart, CreditCard } from "lucide-react";
 import { Button } from "./ui/button";
-import zapierLogo from "@/assets/tech/zapier.svg";
-import makeLogo from "@/assets/tech/make.svg";
-import n8nLogo from "@/assets/tech/n8n.svg";
-import airtableLogo from "@/assets/tech/airtable.svg";
-import softrLogo from "@/assets/tech/softr.svg";
-import mondayLogo from "@/assets/tech/monday.svg";
-import shopifyLogo from "@/assets/tech/shopify.svg";
-import stripeLogo from "@/assets/tech/stripe-ar21.svg";
 
 const Hero = () => {
   const techIcons = [
-    { name: "Zapier", logo: zapierLogo },
-    { name: "Make", logo: makeLogo },
-    { name: "N8N", logo: n8nLogo },
-    { name: "Airtable", logo: airtableLogo },
-    { name: "Softr", logo: softrLogo },
-    { name: "Monday", logo: mondayLogo },
-    { name: "Shopify", logo: shopifyLogo },
-    { name: "Stripe", logo: stripeLogo },
+    { name: "Zapier", icon: Workflow },
+    { name: "Make", icon: Workflow },
+    { name: "N8N", icon: Workflow },
+    { name: "Airtable", icon: Database },
+    { name: "Softr", icon: Database },
+    { name: "Monday", icon: Calendar },
+    { name: "Shopify", icon: ShoppingCart },
+    { name: "Stripe", icon: CreditCard },
   ];
 
   const metrics = [
@@ -120,15 +112,18 @@ const Hero = () => {
           <div className="flex gap-6 animate-seamless-scroll">
             {[...Array(3)].map((_, setIndex) => (
               <div key={setIndex} className="flex gap-6 shrink-0">
-                {techIcons.map((tech, i) => (
-                  <div
-                    key={`${setIndex}-${i}`}
-                    className="flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0"
-                  >
-                    <img src={tech.logo} alt={tech.name} className="h-7 w-7 object-contain" />
-                    <span className="font-semibold text-foreground">{tech.name}</span>
-                  </div>
-                ))}
+                {techIcons.map((tech, i) => {
+                  const Icon = tech.icon;
+                  return (
+                    <div
+                      key={`${setIndex}-${i}`}
+                      className="flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0"
+                    >
+                      <Icon className="h-7 w-7 text-primary" />
+                      <span className="font-semibold text-foreground">{tech.name}</span>
+                    </div>
+                  );
+                })}
               </div>
             ))}
           </div>
