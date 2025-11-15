@@ -91,7 +91,11 @@ const Integrations = () => {
                     key={`${setIndex}-${i}`}
                     className="flex items-center gap-4 px-8 py-5 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0 group"
                   >
-                    <img src={app.logo} alt={app.name} className="h-10 w-10 object-contain group-hover:scale-110 transition-transform" />
+                    <img 
+                      src={app.logo} 
+                      alt={app.name} 
+                      className="h-10 w-10 object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" 
+                    />
                     <span className="font-semibold text-lg text-foreground">{app.name}</span>
                   </div>
                 ))}
@@ -110,7 +114,11 @@ const Integrations = () => {
                     key={`${setIndex}-${i}`}
                     className="flex items-center gap-4 px-8 py-5 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0 group"
                   >
-                    <img src={app.logo} alt={app.name} className="h-10 w-10 object-contain group-hover:scale-110 transition-transform" />
+                    <img 
+                      src={app.logo} 
+                      alt={app.name} 
+                      className="h-10 w-10 object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" 
+                    />
                     <span className="font-semibold text-lg text-foreground">{app.name}</span>
                   </div>
                 ))}
@@ -129,7 +137,11 @@ const Integrations = () => {
                     key={`${setIndex}-${i}`}
                     className="flex items-center gap-4 px-8 py-5 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0 group"
                   >
-                    <img src={app.logo} alt={app.name} className="h-10 w-10 object-contain group-hover:scale-110 transition-transform" />
+                    <img 
+                      src={app.logo} 
+                      alt={app.name} 
+                      className="h-10 w-10 object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" 
+                    />
                     <span className="font-semibold text-lg text-foreground">{app.name}</span>
                   </div>
                 ))}
