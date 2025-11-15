@@ -1,13 +1,19 @@
-import { Zap, Workflow, Database, Calendar } from "lucide-react";
+import { Zap } from "lucide-react";
+import zapierLogo from "@/assets/tech/zapier.svg";
+import makeLogo from "@/assets/tech/make.svg";
+import n8nLogo from "@/assets/tech/n8n.svg";
+import airtableLogo from "@/assets/tech/airtable.svg";
+import softrLogo from "@/assets/tech/softr.svg";
+import mondayLogo from "@/assets/tech/monday.svg";
 
 const About = () => {
   const platforms = [
-    { name: "Zapier", icon: Workflow },
-    { name: "Make.com", icon: Workflow },
-    { name: "N8N", icon: Workflow },
-    { name: "Airtable", icon: Database },
-    { name: "Softr", icon: Database },
-    { name: "Monday.com", icon: Calendar },
+    { name: "Zapier", logo: zapierLogo },
+    { name: "Make.com", logo: makeLogo },
+    { name: "N8N", logo: n8nLogo },
+    { name: "Airtable", logo: airtableLogo },
+    { name: "Softr", logo: softrLogo },
+    { name: "Monday.com", logo: mondayLogo },
   ];
 
   return (
@@ -41,15 +47,12 @@ const About = () => {
             <div className="backdrop-blur-xl bg-card/40 border border-border/50 rounded-3xl p-10 shadow-elevated hover:shadow-glow transition-all duration-500">
               <h3 className="text-2xl font-bold mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Platform Expertise</h3>
               <div className="grid grid-cols-2 gap-6">
-                {platforms.map((platform, index) => {
-                  const Icon = platform.icon;
-                  return (
-                    <div key={platform.name} className="group p-6 rounded-2xl backdrop-blur-xl bg-background/60 border border-border/30 hover:border-primary/50 hover:scale-110 transition-all duration-300 hover:shadow-glass" style={{ animationDelay: `${index * 0.1}s` }}>
-                      <Icon className="h-12 w-12 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
-                      <p className="font-semibold text-foreground group-hover:text-primary transition-colors">{platform.name}</p>
-                    </div>
-                  );
-                })}
+                {platforms.map((platform, index) => (
+                  <div key={platform.name} className="group p-6 rounded-2xl backdrop-blur-xl bg-background/60 border border-border/30 hover:border-primary/50 hover:scale-110 transition-all duration-300 hover:shadow-glass" style={{ animationDelay: `${index * 0.1}s` }}>
+                    <img src={platform.logo} alt={platform.name} className="h-12 w-12 object-contain mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <p className="font-semibold text-foreground group-hover:text-primary transition-colors">{platform.name}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
