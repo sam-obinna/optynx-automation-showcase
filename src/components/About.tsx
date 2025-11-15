@@ -49,7 +49,11 @@ const About = () => {
               <div className="grid grid-cols-2 gap-6">
                 {platforms.map((platform, index) => (
                   <div key={platform.name} className="group p-6 rounded-2xl backdrop-blur-xl bg-background/60 border border-border/30 hover:border-primary/50 hover:scale-110 transition-all duration-300 hover:shadow-glass" style={{ animationDelay: `${index * 0.1}s` }}>
-                    <img src={platform.logo} alt={platform.name} className="h-12 w-12 object-contain mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <img 
+                      src={platform.logo} 
+                      alt={platform.name} 
+                      className="h-12 w-12 object-contain mb-4 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" 
+                    />
                     <p className="font-semibold text-foreground group-hover:text-primary transition-colors">{platform.name}</p>
                   </div>
                 ))}

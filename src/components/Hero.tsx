@@ -123,9 +123,13 @@ const Hero = () => {
                 {techIcons.map((tech, i) => (
                   <div
                     key={`${setIndex}-${i}`}
-                    className="flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0"
+                    className="group flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-card/60 border border-border/50 rounded-2xl whitespace-nowrap hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0"
                   >
-                    <img src={tech.logo} alt={tech.name} className="h-7 w-7 object-contain" />
+                    <img 
+                      src={tech.logo} 
+                      alt={tech.name} 
+                      className="h-7 w-7 object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" 
+                    />
                     <span className="font-semibold text-foreground">{tech.name}</span>
                   </div>
                 ))}
