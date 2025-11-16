@@ -8,47 +8,48 @@ All colors MUST be HSL.
 
 @layer base {
 :root {
-    /* Modern Purple/Cyan Theme */
-    --background: 240 20% 98%;
-    --foreground: 240 10% 10%;
+    /* Modern Teal/Coral Theme */
+    --background: 210 25% 97%;
+    --foreground: 215 30% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 10%;
+    --card-foreground: 215 30% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
+    --popover-foreground: 215 30% 15%;
 
-    /* Primary: Vibrant Orange */
-    --primary: 15 100% 50%;
+    /* Primary: Electric Teal */
+    --primary: 180 85% 45%;
     --primary-foreground: 0 0% 100%;
-    --primary-dark: 15 100% 40%;
-    --primary-glow: 15 100% 60%;
+    --primary-dark: 180 85% 35%;
+    --primary-glow: 180 85% 55%;
 
-    /* Secondary: Dark Gray */
-    --secondary: 220 15% 25%;
+    /* Secondary: Deep Navy */
+    --secondary: 215 50% 25%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-dark: 220 15% 15%;
+    --secondary-dark: 215 50% 15%;
 
-    --muted: 220 10% 95%;
-    --muted-foreground: 220 8% 45%;
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 15% 45%;
 
-    /* Accent: Light Orange */
-    --accent: 25 100% 55%;
+    /* Accent: Coral Pink */
+    --accent: 10 85% 65%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 10% 88%;
-    --input: 240 10% 90%;
-    --ring: 270 80% 60%;
+    --border: 210 20% 88%;
+    --input: 210 20% 92%;
+    --ring: 180 85% 45%;
 
-    --radius: 1rem;
+    --radius: 1.25rem;
 
-    /* Shadows */
-    --shadow-glass: 0 8px 32px 0 rgba(255, 79, 0, 0.1);
-    --shadow-glow: 0 0 40px rgba(255, 79, 0, 0.3);
-    --shadow-elevated: 0 20px 60px -15px rgba(255, 79, 0, 0.25);
+    /* Shadows with new colors */
+    --shadow-glass: 0 8px 32px 0 rgba(0, 180, 180, 0.12);
+    --shadow-glow: 0 0 40px rgba(0, 180, 180, 0.35);
+    --shadow-elevated: 0 20px 60px -15px rgba(0, 180, 180, 0.3);
+    --shadow-coral: 0 0 30px rgba(255, 120, 100, 0.25);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -61,42 +62,43 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Dark Mode - Deep Purple/Blue Theme */
-    --background: 240 25% 8%;
-    --foreground: 240 10% 98%;
+    /* Dark Mode - Deep Navy/Teal Theme */
+    --background: 215 45% 8%;
+    --foreground: 210 20% 98%;
 
-    --card: 240 20% 12%;
-    --card-foreground: 240 10% 98%;
+    --card: 215 40% 12%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 240 20% 12%;
-    --popover-foreground: 240 10% 98%;
+    --popover: 215 40% 12%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 15 100% 55%;
+    --primary: 180 85% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-dark: 15 100% 45%;
-    --primary-glow: 15 100% 65%;
+    --primary-dark: 180 85% 40%;
+    --primary-glow: 180 85% 60%;
 
-    --secondary: 220 15% 30%;
+    --secondary: 215 50% 30%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-dark: 220 15% 20%;
+    --secondary-dark: 215 50% 20%;
 
-    --muted: 220 15% 20%;
-    --muted-foreground: 220 10% 70%;
+    --muted: 215 35% 18%;
+    --muted-foreground: 215 15% 70%;
 
-    --accent: 25 100% 60%;
+    --accent: 10 85% 68%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 20% 22%;
-    --input: 240 20% 20%;
-    --ring: 270 80% 65%;
+    --border: 215 30% 22%;
+    --input: 215 30% 20%;
+    --ring: 180 85% 50%;
     
     /* Dark Shadows */
-    --shadow-glass: 0 8px 32px 0 rgba(255, 79, 0, 0.2);
-    --shadow-glow: 0 0 50px rgba(255, 79, 0, 0.4);
-    --shadow-elevated: 0 20px 60px -15px rgba(255, 79, 0, 0.35);
+    --shadow-glass: 0 8px 32px 0 rgba(0, 200, 200, 0.18);
+    --shadow-glow: 0 0 50px rgba(0, 200, 200, 0.45);
+    --shadow-elevated: 0 20px 60px -15px rgba(0, 200, 200, 0.4);
+    --shadow-coral: 0 0 40px rgba(255, 120, 100, 0.3);
 
     --sidebar-background: 240 25% 10%;
     --sidebar-foreground: 240 10% 95.9%;
