@@ -103,7 +103,7 @@ export default {
         },
         "slide-up": {
           "0%": {
-            transform: "translateY(30px)",
+            transform: "translateY(100px)",
             opacity: "0",
           },
           "100%": {
@@ -111,73 +111,28 @@ export default {
             opacity: "1",
           },
         },
-        "slide-right": {
-          "0%": {
-            transform: "translateX(-30px)",
-            opacity: "0",
-          },
-          "100%": {
-            transform: "translateX(0)",
-            opacity: "1",
-          },
-        },
         "glow": {
           "0%, 100%": {
-            boxShadow: "0 0 20px hsl(var(--primary) / 0.3)",
+            boxShadow: "0 0 20px rgba(120, 60, 220, 0.3)",
           },
           "50%": {
-            boxShadow: "0 0 40px hsl(var(--primary) / 0.6)",
-          },
-        },
-        "glow-coral": {
-          "0%, 100%": {
-            boxShadow: "0 0 20px hsl(var(--accent) / 0.3)",
-          },
-          "50%": {
-            boxShadow: "0 0 35px hsl(var(--accent) / 0.5)",
+            boxShadow: "0 0 40px rgba(120, 60, 220, 0.6)",
           },
         },
         "float": {
           "0%, 100%": {
-            transform: "translateY(0px) rotate(0deg)",
-          },
-          "50%": {
-            transform: "translateY(-20px) rotate(3deg)",
-          },
-        },
-        "float-slow": {
-          "0%, 100%": {
             transform: "translateY(0px)",
           },
           "50%": {
-            transform: "translateY(-30px)",
+            transform: "translateY(-20px)",
           },
         },
         "gradient-shift": {
-          "0%": {
+          "0%, 100%": {
             backgroundPosition: "0% 50%",
           },
           "50%": {
             backgroundPosition: "100% 50%",
-          },
-          "100%": {
-            backgroundPosition: "0% 50%",
-          },
-        },
-        "morph": {
-          "0%, 100%": {
-            borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-          },
-          "50%": {
-            borderRadius: "30% 60% 70% 40% / 50% 60% 30% 60%",
-          },
-        },
-        "scroll-seamless": {
-          "0%": {
-            transform: "translateX(0)",
-          },
-          "100%": {
-            transform: "translateX(-50%)",
           },
         },
       },
@@ -187,14 +142,9 @@ export default {
         "fade-in": "fade-in 0.6s ease-out",
         "scale-in": "scale-in 0.4s ease-out",
         "slide-up": "slide-up 0.6s ease-out",
-        "slide-right": "slide-right 0.6s ease-out",
-        glow: "glow 3s ease-in-out infinite",
-        "glow-coral": "glow-coral 3s ease-in-out infinite",
-        float: "float 6s ease-in-out infinite",
-        "float-slow": "float-slow 8s ease-in-out infinite",
-        "gradient-shift": "gradient-shift 8s ease infinite",
-        morph: "morph 8s ease-in-out infinite",
-        "scroll-seamless": "scroll-seamless 30s linear infinite",
+        "glow": "glow 2s ease-in-out infinite",
+        "float": "float 6s ease-in-out infinite",
+        "gradient-shift": "gradient-shift 3s ease infinite",
       },
     },
   },
