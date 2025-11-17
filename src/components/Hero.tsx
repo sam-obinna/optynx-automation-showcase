@@ -57,11 +57,13 @@ const Hero = () => {
           {[...Array(5)].map((_, i) => (
             <Star 
               key={i} 
-              className="w-4 h-4 fill-primary text-primary" 
+              className="w-4 h-4 fill-yellow-400 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]"
+              strokeWidth={1.2}
+              stroke="green"
             />
           ))}
-          <span className="text-sm font-semibold ml-2 text-primary">
-            Trusted by 100+ Businesses
+          <span className="text-sm font-semibold ml-2 text-foreground">
+            100% Client Satisfaction
           </span>
         </div>
 
@@ -95,13 +97,13 @@ const Hero = () => {
                 key={index}
                 className="bg-card border border-border rounded-2xl p-8 hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md group"
               >
-                <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center mb-4 mx-auto group-hover:rotate-12 transition-transform duration-300">
-                  <Icon className="w-7 h-7 text-primary-foreground" />
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${metric.color} flex items-center justify-center mb-4 mx-auto group-hover:rotate-12 transition-transform duration-300 shadow-glass`}>
+                  <Icon className="w-7 h-7 text-white" />
                 </div>
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-primary">
+                <div className={`font-bold text-3xl md:text-4xl bg-gradient-to-r ${metric.color} bg-clip-text text-transparent`}>
                   {metric.value}
                 </div>
-                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                <div className="text-sm text-muted-foreground">
                   {metric.label}
                 </div>
               </div>
