@@ -19,36 +19,36 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-20 px-4 bg-muted/30">
+    <section id="testimonials" className="py-16 sm:py-20 px-4 sm:px-6 bg-muted/30 dark:bg-muted/20">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">What Our Clients Say</h2>
-        <p className="text-muted-foreground text-center mb-12">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 px-2">What Our Clients Say</h2>
+        <p className="text-muted-foreground text-center mb-8 sm:mb-12 text-sm sm:text-base px-2">
           Real results from real businesses
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="p-8 bg-card border border-border rounded-xl hover:shadow-xl transition-all duration-300 animate-fade-in"
+              className="p-6 sm:p-8 bg-card dark:bg-card/80 border border-border rounded-xl hover:shadow-xl dark:hover:shadow-primary/10 transition-all duration-300 animate-fade-in"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
-              <div className="text-6xl text-primary mb-4">"</div>
-              <p className="text-lg mb-6 leading-relaxed">{testimonial.quote}</p>
+              <div className="text-4xl sm:text-6xl text-primary mb-3 sm:mb-4">"</div>
+              <p className="text-base sm:text-lg mb-4 sm:mb-6 leading-relaxed text-foreground">{testimonial.quote}</p>
               
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                  <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-primary text-primary" />
                 ))}
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm sm:text-base">
                   {testimonial.initials}
                 </div>
                 <div>
-                  <div className="font-bold">{testimonial.author}</div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="font-bold text-sm sm:text-base text-foreground">{testimonial.author}</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">
                     {testimonial.role}, {testimonial.company}
                   </div>
                 </div>

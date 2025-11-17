@@ -77,22 +77,22 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="py-24 px-4 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
-      <div className="container mx-auto">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">Our Work</h2>
-        <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+    <section id="portfolio" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-gradient-to-b from-background to-muted/30 dark:to-muted/20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] dark:opacity-[0.05]"></div>
+      <div className="container mx-auto max-w-7xl">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 px-2">Our Work</h2>
+        <p className="text-muted-foreground text-center mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base px-2">
           Real automation solutions delivering measurable results
         </p>
 
         {/* Carousel Container */}
         <div className="relative max-w-6xl mx-auto">
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - Hidden on mobile */}
           {currentIndex > 0 && (
             <Button
               variant="outline"
               size="icon"
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10 bg-background shadow-lg hover:scale-110"
+              className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 sm:-translate-x-4 md:-translate-x-12 z-10 bg-background dark:bg-card shadow-lg hover:scale-110"
               onClick={prevSlide}
             >
               <ChevronLeft className="w-6 h-6" />
@@ -102,7 +102,7 @@ const Portfolio = () => {
             <Button
               variant="outline"
               size="icon"
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10 bg-background shadow-lg hover:scale-110"
+              className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 sm:translate-x-4 md:translate-x-12 z-10 bg-background dark:bg-card shadow-lg hover:scale-110"
               onClick={nextSlide}
             >
               <ChevronRight className="w-6 h-6" />
