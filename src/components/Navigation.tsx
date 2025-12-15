@@ -25,15 +25,15 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 w-full z-50 backdrop-blur-xl bg-background/70 border-b border-border/50 shadow-glass">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-3 sm:px-4 py-2.5 sm:py-3">
         <div className="flex items-center justify-between">
           
-          {/* Logo with OpTynx SVG - Now Static */}
-          <a href="#home" className="flex items-center gap-3 group">
+          {/* Logo with OpTynx SVG */}
+          <a href="#home" className="flex items-center gap-2 group">
             <svg 
               viewBox="0 0 100 100" 
               xmlns="http://www.w3.org/2000/svg" 
-              className="w-12 h-12"
+              className="w-8 h-8 sm:w-10 sm:h-10"
             >
               <path 
                 d="M50 35 L54 20 L46 20 Z M50 65 L54 80 L46 80 Z M65 50 L80 54 L80 46 Z M35 50 L20 54 L20 46 Z" 
@@ -47,28 +47,28 @@ const Navigation = () => {
               <circle cx="50" cy="50" r="8" fill="#0a0a0a"/>
             </svg>
 
-            <span className="text-2xl font-bold text-[#ff4f00] transition-all duration-300">
+            <span className="text-lg sm:text-xl font-bold text-[#ff4f00] transition-all duration-300">
               OpTynx
             </span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 relative group"
+                className="text-sm text-foreground/80 hover:text-foreground font-medium transition-all duration-300 relative group"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#ff4f00] to-[#ff8c42] group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
 
-            {/* Solid Orange Get Started Button */}
             <Button
               asChild
-              className="bg-[#FF4000] text-white hover:bg-[#e33a00] transition-all duration-300 shadow-glass border-0 rounded-full px-6"
+              size="sm"
+              className="bg-[#FF4000] text-white hover:bg-[#e33a00] transition-all duration-300 shadow-glass border-0 rounded-full px-4 text-sm"
             >
               <a 
                 href="https://cal.com/samuel-obinna-nwafor-gvyquk/optnx"
@@ -83,31 +83,31 @@ const Navigation = () => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-xl backdrop-blur-xl bg-card/60 border border-border/50"
+            className="md:hidden p-1.5 rounded-lg backdrop-blur-xl bg-card/60 border border-border/50"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden mt-6 pb-6 animate-fade-in">
-            <div className="flex flex-col gap-4">
+          <div className="md:hidden mt-3 pb-3 animate-fade-in">
+            <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-foreground/80 hover:text-foreground font-medium px-4 py-3 rounded-xl backdrop-blur-xl bg-card/40 border border-border/30 hover:border-[#ff4f00]/50 transition-all duration-300"
+                  className="text-sm text-foreground/80 hover:text-foreground font-medium px-3 py-2 rounded-lg backdrop-blur-xl bg-card/40 border border-border/30 hover:border-[#ff4f00]/50 transition-all duration-300"
                 >
                   {link.label}
                 </a>
               ))}
 
-              {/* Solid Orange Mobile Button */}
               <Button
                 asChild
-                className="bg-[#FF4000] text-white hover:bg-[#e33a00] transition-all duration-300 shadow-glass border-0 rounded-xl"
+                size="sm"
+                className="bg-[#FF4000] text-white hover:bg-[#e33a00] transition-all duration-300 shadow-glass border-0 rounded-lg text-sm"
               >
                 <a 
                   href="https://cal.com/samuel-obinna-nwafor-gvyquk/optnx"
