@@ -41,45 +41,45 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+    <section id="services" className="py-12 sm:py-16 md:py-20 px-3 sm:px-4 md:px-6 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] dark:opacity-[0.05]"></div>
-      <div className="absolute bottom-20 left-10 w-64 h-64 sm:w-96 sm:h-96 bg-accent/10 dark:bg-accent/5 rounded-full blur-[120px]"></div>
+      <div className="absolute bottom-20 left-10 w-40 h-40 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-accent/10 dark:bg-accent/5 rounded-full blur-[100px]"></div>
       
-      <div className="container mx-auto relative z-10 max-w-7xl">
-        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
-          <div className="inline-block px-4 sm:px-6 py-2 rounded-full backdrop-blur-xl bg-primary/10 dark:bg-primary/20 border border-primary/20 dark:border-primary/30 mb-4 sm:mb-6">
-            <span className="text-xs sm:text-sm font-semibold text-primary">
+      <div className="container mx-auto relative z-10 max-w-6xl">
+        <div className="text-center mb-8 sm:mb-12 animate-fade-in">
+          <div className="inline-block px-3 sm:px-4 py-1.5 rounded-full backdrop-blur-xl bg-primary/10 dark:bg-primary/20 border border-primary/20 dark:border-primary/30 mb-3 sm:mb-4">
+            <span className="text-[10px] sm:text-xs font-semibold text-primary">
               SERVICES
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 px-1">
             What We{" "}
             <span className="text-primary">
               Automate
             </span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-2">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-1">
             From simple workflows to complex AI-powered systems, we build automation that transforms how you work
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <div
                 key={index}
-                className="group backdrop-blur-xl bg-card/40 dark:bg-card/60 border border-border/50 rounded-3xl p-6 sm:p-8 hover:scale-105 transition-all duration-500 hover:shadow-elevated dark:hover:shadow-primary/10 animate-slide-up"
+                className="group backdrop-blur-xl bg-card/40 dark:bg-card/60 border border-border/50 rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 hover:scale-105 transition-all duration-500 hover:shadow-elevated dark:hover:shadow-primary/10 animate-slide-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-primary flex items-center justify-center mb-4 sm:mb-6 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 shadow-glass">
-                  <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 shadow-glass">
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-foreground group-hover:text-primary transition-all">
+                <h3 className="text-sm sm:text-base md:text-lg font-bold mb-1.5 sm:mb-2 text-foreground group-hover:text-primary transition-all">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+                <p className="text-muted-foreground leading-relaxed text-xs sm:text-sm line-clamp-3">
                   {service.description}
                 </p>
               </div>

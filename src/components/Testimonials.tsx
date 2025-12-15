@@ -19,36 +19,36 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-16 sm:py-20 px-4 sm:px-6 bg-muted/30 dark:bg-muted/20">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 px-2">What Our Clients Say</h2>
-        <p className="text-muted-foreground text-center mb-8 sm:mb-12 text-sm sm:text-base px-2">
+    <section id="testimonials" className="py-12 sm:py-16 md:py-20 px-3 sm:px-4 md:px-6 bg-muted/30 dark:bg-muted/20">
+      <div className="container mx-auto max-w-5xl">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-2 sm:mb-3 px-1">What Our Clients Say</h2>
+        <p className="text-muted-foreground text-center mb-6 sm:mb-8 text-xs sm:text-sm px-1">
           Real results from real businesses
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="p-6 sm:p-8 bg-card dark:bg-card/80 border border-border rounded-xl hover:shadow-xl dark:hover:shadow-primary/10 transition-all duration-300 animate-fade-in"
+              className="p-4 sm:p-5 md:p-6 bg-card dark:bg-card/80 border border-border rounded-lg sm:rounded-xl hover:shadow-lg dark:hover:shadow-primary/10 transition-all duration-300 animate-fade-in"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
-              <div className="text-4xl sm:text-6xl text-primary mb-3 sm:mb-4">"</div>
-              <p className="text-base sm:text-lg mb-4 sm:mb-6 leading-relaxed text-foreground">{testimonial.quote}</p>
+              <div className="text-3xl sm:text-4xl text-primary mb-2 sm:mb-3">"</div>
+              <p className="text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed text-foreground">{testimonial.quote}</p>
               
-              <div className="flex items-center gap-1 mb-4">
+              <div className="flex items-center gap-0.5 mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-primary text-primary" />
+                  <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-primary text-primary" />
                 ))}
               </div>
 
-              <div className="flex items-center gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm sm:text-base">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xs sm:text-sm">
                   {testimonial.initials}
                 </div>
                 <div>
-                  <div className="font-bold text-sm sm:text-base text-foreground">{testimonial.author}</div>
-                  <div className="text-xs sm:text-sm text-muted-foreground">
+                  <div className="font-bold text-xs sm:text-sm text-foreground">{testimonial.author}</div>
+                  <div className="text-[10px] sm:text-xs text-muted-foreground">
                     {testimonial.role}, {testimonial.company}
                   </div>
                 </div>
