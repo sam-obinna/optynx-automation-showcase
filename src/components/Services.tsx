@@ -55,7 +55,7 @@ const Services = () => {
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 px-1">
             What We{" "}
-            <span className="text-primary">
+            <span className="text-gradient">
               Automate
             </span>
           </h2>
@@ -73,7 +73,7 @@ const Services = () => {
                 className="group backdrop-blur-xl bg-card/40 dark:bg-card/60 border border-border/50 rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 hover:scale-105 transition-all duration-500 hover:shadow-elevated dark:hover:shadow-primary/10 animate-slide-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 shadow-glass">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl icon-container-gradient flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 shadow-glass">
                   <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <h3 className="text-sm sm:text-base md:text-lg font-bold mb-1.5 sm:mb-2 text-foreground group-hover:text-primary transition-all">

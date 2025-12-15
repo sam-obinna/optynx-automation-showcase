@@ -28,26 +28,15 @@ const Navigation = () => {
       <div className="container mx-auto px-3 sm:px-4 py-2.5 sm:py-3">
         <div className="flex items-center justify-between">
           
-          {/* Logo with OpTynx SVG */}
+          {/* Logo with Favicon */}
           <a href="#home" className="flex items-center gap-2 group">
-            <svg 
-              viewBox="0 0 100 100" 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="w-8 h-8 sm:w-10 sm:h-10"
-            >
-              <path 
-                d="M50 35 L54 20 L46 20 Z M50 65 L54 80 L46 80 Z M65 50 L80 54 L80 46 Z M35 50 L20 54 L20 46 Z" 
-                fill="#ff4f00"
-              />
-              <path 
-                d="M62 38 L73 27 L69 23 L58 34 Z M38 62 L27 73 L23 69 L34 58 Z M62 62 L73 73 L69 77 L58 66 Z M38 38 L27 27 L23 31 L34 42 Z" 
-                fill="#ff8c42"
-              />
-              <circle cx="50" cy="50" r="15" fill="#ff4f00"/>
-              <circle cx="50" cy="50" r="8" fill="#0a0a0a"/>
-            </svg>
+            <img 
+              src="/favicon.png" 
+              alt="OpTynx Logo" 
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg"
+            />
 
-            <span className="text-lg sm:text-xl font-bold text-[#ff4f00] transition-all duration-300">
+            <span className="text-lg sm:text-xl font-bold text-gradient transition-all duration-300">
               OpTynx
             </span>
           </a>
