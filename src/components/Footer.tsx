@@ -8,10 +8,12 @@ const Footer = () => {
           {/* Company Info */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
-              <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary flex items-center justify-center font-bold text-white text-[10px] sm:text-xs">
-                OT
-              </div>
-              <span className="text-sm sm:text-base font-bold text-foreground">OpTynx</span>
+              <img 
+                src="/favicon.png" 
+                alt="OpTynx Logo" 
+                className="w-6 h-6 sm:w-8 sm:h-8 rounded-md"
+              />
+              <span className="text-sm sm:text-base font-bold text-gradient">OpTynx</span>
             </div>
             <p className="text-[10px] sm:text-xs text-muted-foreground leading-relaxed">
               AI & Business Process Automation specialists helping companies work smarter, not harder.

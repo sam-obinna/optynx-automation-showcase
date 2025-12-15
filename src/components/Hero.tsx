@@ -69,7 +69,7 @@ const Hero = () => {
 
         {/* Headline */}
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight max-w-4xl mx-auto px-1">
-          Transform Your Business with{" "}
+          <span className="text-gradient">Transform</span> Your Business with{" "}
           <span className="text-primary">
             Intelligent Automation
           </span>
@@ -97,10 +97,10 @@ const Hero = () => {
                 key={index}
                 className="bg-card dark:bg-card/80 border border-border rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md dark:hover:shadow-primary/10 group"
               >
-                <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-primary flex items-center justify-center mb-2 sm:mb-3 mx-auto group-hover:rotate-12 transition-transform duration-300 shadow-glass">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl icon-container-gradient flex items-center justify-center mb-2 sm:mb-3 mx-auto group-hover:rotate-12 transition-transform duration-300 shadow-glass">
                   <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
                 </div>
-                <div className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl text-primary">
+                <div className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl text-gradient">
                   {metric.value}
                 </div>
                 <div className="text-[10px] sm:text-xs text-muted-foreground mt-0.5 sm:mt-1 leading-tight">

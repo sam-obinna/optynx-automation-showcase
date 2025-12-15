@@ -47,7 +47,7 @@ const Process = () => {
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
             How We{" "}
-            <span className="text-primary">
+            <span className="text-gradient">
               Transform
             </span>{" "}
             Your Business
@@ -78,10 +78,10 @@ const Process = () => {
                   <div className={`flex-1 ${isEven ? "lg:text-right" : "lg:text-left"}`}>
                     <div className="backdrop-blur-xl bg-card/40 dark:bg-card/60 border border-border/50 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 hover:scale-[1.02] transition-all duration-500 hover:shadow-elevated dark:hover:shadow-primary/10 group">
                       <div className={`flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 ${isEven ? "lg:flex-row-reverse" : ""}`}>
-                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary flex items-center justify-center text-lg sm:text-xl font-bold text-white shadow-glass group-hover:rotate-6 transition-transform duration-300">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl icon-container-gradient flex items-center justify-center text-lg sm:text-xl font-bold text-white shadow-glass group-hover:rotate-6 transition-transform duration-300">
                           {step.number}
                         </div>
-                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg icon-container-gradient flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                           <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                         </div>
                       </div>
