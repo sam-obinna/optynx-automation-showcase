@@ -8,8 +8,23 @@ const Footer = () => {
           {/* Company Info */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-3 md:mb-4">
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center font-bold text-white text-sm md:text-base">
-                OT
+              <div className="flex items-center gap-3 group">
+              <svg 
+              viewBox="0 0 100 100" 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="w-12 h-12"
+            >
+              <path 
+                d="M50 35 L54 20 L46 20 Z M50 65 L54 80 L46 80 Z M65 50 L80 54 L80 46 Z M35 50 L20 54 L20 46 Z" 
+                fill="#ff4f00"
+              />
+              <path 
+                d="M62 38 L73 27 L69 23 L58 34 Z M38 62 L27 73 L23 69 L34 58 Z M62 62 L73 73 L69 77 L58 66 Z M38 38 L27 27 L23 31 L34 42 Z" 
+                fill="#ff8c42"
+              />
+              <circle cx="50" cy="50" r="15" fill="#ff4f00"/>
+              <circle cx="50" cy="50" r="8" fill="#0a0a0a"/>
+            </svg>
               </div>
               <span className="text-lg md:text-xl font-bold">OpTynx</span>
             </div>

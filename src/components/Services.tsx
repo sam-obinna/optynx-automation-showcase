@@ -18,7 +18,7 @@ const Services = () => {
       icon: Link,
       title: "API Integration",
       description: "Connect all your tools and systems seamlessly for smooth data flow across your entire stack.",
-      gradient: "from-accent to-primary",
+      gradient: "from-accent via-secondary to-primary",
     },
     {
       icon: BarChart,

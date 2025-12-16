@@ -3,16 +3,16 @@ import zapierLogo from "@/assets/tech/zapier.svg";
 import makeLogo from "@/assets/tech/make.svg";
 import n8nLogo from "@/assets/tech/n8n.svg";
 import airtableLogo from "@/assets/tech/airtable.svg";
-import softrLogo from "@/assets/tech/softr.svg";
+import softrLogo from "@/assets/tech/leadsimple.jpg";
 import mondayLogo from "@/assets/tech/monday.svg";
 
 const About = () => {
   const platforms = [
     { name: "Zapier", logo: zapierLogo },
+    { name: "Leadsimple", logo: softrLogo },
     { name: "Make.com", logo: makeLogo },
     { name: "N8N", logo: n8nLogo },
     { name: "Airtable", logo: airtableLogo },
-    { name: "Softr", logo: softrLogo },
     { name: "Monday.com", logo: mondayLogo },
   ];
 

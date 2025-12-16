@@ -21,7 +21,7 @@ const Process = () => {
       icon: Rocket,
       title: "Implementation",
       description: "We build, test, and deploy your automation system with minimal disruption to your operations.",
-      gradient: "from-accent to-primary",
+      gradient: "from-accent via-secondary to-primary",
     },
     {
       number: "04",
