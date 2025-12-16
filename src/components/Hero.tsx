@@ -103,7 +103,7 @@ const Hero = () => {
                 <div className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl text-gradient">
                   {metric.value}
                 </div>
-                <div className="text-[10px] sm:text-xs text-muted-foreground mt-0.5 sm:mt-1 leading-tight">
+                <div className="text-[10px] sm:text-xs text-gradient font-medium mt-0.5 sm:mt-1 leading-tight">
                   {metric.label}
                 </div>
               </div>

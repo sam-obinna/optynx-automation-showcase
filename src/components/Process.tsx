@@ -85,7 +85,7 @@ const Process = () => {
                           <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                         </div>
                       </div>
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 group-hover:text-primary transition-all">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-gradient">
                         {step.title}
                       </h3>
                       <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed">
