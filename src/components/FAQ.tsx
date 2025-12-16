@@ -40,27 +40,27 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 px-3 sm:px-4 md:px-6 bg-background">
-      <div className="container mx-auto max-w-2xl">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-2 sm:mb-3">Frequently Asked Questions</h2>
-        <p className="text-sm sm:text-base text-muted-foreground text-center mb-6 sm:mb-8 md:mb-10">
+    <section className="py-20 px-4 bg-background">
+      <div className="container mx-auto max-w-3xl">
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">Frequently Asked Questions</h2>
+        <p className="text-muted-foreground text-center mb-12">
           Everything you need to know about working with us
         </p>
 
-        <div className="space-y-2 sm:space-y-3">
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="border border-border rounded-lg sm:rounded-xl overflow-hidden bg-card animate-fade-in"
+              className="border border-border rounded-xl overflow-hidden bg-card animate-fade-in"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <button
-                className="w-full p-3 sm:p-4 text-left flex justify-between items-center hover:bg-muted/50 transition-colors"
+                className="w-full p-6 text-left flex justify-between items-center hover:bg-muted/50 transition-colors"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
-                <span className="font-semibold text-sm sm:text-base pr-3">{faq.question}</span>
+                <span className="font-semibold text-lg pr-4">{faq.question}</span>
                 <ChevronDown
-                  className={`w-4 h-4 flex-shrink-0 transition-transform duration-300 ${
+                  className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 ${
                     openIndex === index ? "rotate-180" : ""
                   }`}
                 />
@@ -70,7 +70,7 @@ const FAQ = () => {
                   openIndex === index ? "max-h-48" : "max-h-0"
                 }`}
               >
-                <p className="px-3 sm:px-4 pb-3 sm:pb-4 text-xs sm:text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
+                <p className="px-6 pb-6 text-muted-foreground leading-relaxed">{faq.answer}</p>
               </div>
             </div>
           ))}

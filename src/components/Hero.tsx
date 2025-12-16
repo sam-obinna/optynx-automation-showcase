@@ -43,67 +43,65 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 pb-8 px-3 sm:px-4 md:px-6 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-32 md:pt-40 px-4 overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-background">
-        <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] dark:opacity-[0.05]"></div>
-        <div className="absolute top-20 left-10 w-32 h-32 sm:w-48 sm:h-48 md:w-72 md:h-72 bg-primary/10 dark:bg-primary/5 rounded-full blur-[80px] animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-40 h-40 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-accent/10 dark:bg-accent/5 rounded-full blur-[100px] animate-float" style={{ animationDelay: "2s" }}></div>
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-[100px] animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-[120px] animate-float" style={{ animationDelay: "2s" }}></div>
       </div>
 
-      <div className="container mx-auto text-center relative z-10 animate-fade-in max-w-6xl">
+      <div className="container mx-auto text-center relative z-10 animate-fade-in">
         {/* Rating Badge */}
-        <div className="inline-flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-card border border-border mb-6 sm:mb-8 shadow-sm">
+        <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-card border border-border mb-12 shadow-sm">
           {[...Array(5)].map((_, i) => (
             <Star 
               key={i} 
-              className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-yellow-400 text-yellow-400 drop-shadow-[0_0_6px_rgba(250,204,21,0.8)]"
-              strokeWidth={1.2}
-              stroke="green"
+              className="w-4 h-4 fill-primary text-primary" 
             />
           ))}
-          <span className="text-[10px] sm:text-xs font-semibold ml-1 text-foreground">
-            100% Client Satisfaction
+          <span className="text-sm font-semibold ml-2 text-primary">
+            Trusted by 100+ Businesses
           </span>
         </div>
 
         {/* Headline */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight max-w-4xl mx-auto px-1">
-          <span className="text-gradient">Transform</span> Your Business with{" "}
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight max-w-5xl mx-auto">
+          Transform Your Business with{" "}
           <span className="text-primary">
             Intelligent Automation
           </span>
         </h1>
 
         {/* Subtext */}
-        <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed px-1">
+        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
           We build AI-powered automation systems that handle your repetitive tasks, streamline operations, 
           and free up your team to focus on what actually matters.
         </p>
 
         {/* CTA Button */}
-        <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary-dark text-sm sm:text-base px-5 sm:px-8 py-4 sm:py-6 rounded-full hover:scale-105 transition-all duration-300 shadow-elevated hover:shadow-glow mb-8 sm:mb-12">
+        <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary-dark text-lg px-10 py-7 rounded-full hover:scale-105 transition-all duration-300 shadow-elevated hover:shadow-glow mb-16">
           <a href="https://cal.com/samuel-obinna-nwafor-gvyquk/optnx" target="_blank" rel="noopener noreferrer">
             Book Free Strategy Call →
           </a>
         </Button>
 
         {/* Metrics Section */}
-        <div className="grid grid-cols-3 gap-2 sm:gap-4 max-w-4xl mx-auto mb-8 sm:mb-12 px-1">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-20">
           {metrics.map((metric, index) => {
             const Icon = metric.icon;
             return (
               <div 
                 key={index}
-                className="bg-card dark:bg-card/80 border border-border rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md dark:hover:shadow-primary/10 group"
+                className="bg-card border border-border rounded-2xl p-8 hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md group"
               >
-                <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl icon-container-gradient flex items-center justify-center mb-2 sm:mb-3 mx-auto group-hover:rotate-12 transition-transform duration-300 shadow-glass">
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
+                <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center mb-4 mx-auto group-hover:rotate-12 transition-transform duration-300">
+                  <Icon className="w-7 h-7 text-primary-foreground" />
                 </div>
-                <div className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl text-gradient">
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-primary">
                   {metric.value}
                 </div>
-                <div className="text-[10px] sm:text-xs text-gradient font-medium mt-0.5 sm:mt-1 leading-tight">
+                <div className="text-sm md:text-base text-muted-foreground font-medium">
                   {metric.label}
                 </div>
               </div>
@@ -112,17 +110,17 @@ const Hero = () => {
         </div>
 
         {/* Seamless Infinite Scrolling Tech Icons */}
-        <div className="relative overflow-hidden px-1">
-          <div className="flex gap-2 sm:gap-3 md:gap-4 animate-seamless-scroll">
+        <div className="relative overflow-hidden">
+          <div className="flex gap-6 animate-seamless-scroll">
             {[...Array(3)].map((_, setIndex) => (
-              <div key={setIndex} className="flex gap-2 sm:gap-3 md:gap-4 shrink-0">
+              <div key={setIndex} className="flex gap-6 shrink-0">
                 {techIcons.map((tech, i) => (
                   <div
                     key={`${setIndex}-${i}`}
-                    className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 md:px-6 py-2 sm:py-3 bg-card dark:bg-card/80 border border-border rounded-lg sm:rounded-xl whitespace-nowrap hover:scale-110 hover:border-primary transition-all duration-300 shrink-0"
+                    className="flex items-center gap-3 px-8 py-4 bg-card border border-border rounded-2xl whitespace-nowrap hover:scale-110 hover:border-primary transition-all duration-300 shrink-0"
                   >
-                    <img src={tech.logo} alt={tech.name} className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 object-contain" />
-                    <span className="font-medium text-foreground text-xs sm:text-sm">{tech.name}</span>
+                    <img src={tech.logo} alt={tech.name} className="h-7 w-7 object-contain" />
+                    <span className="font-semibold text-foreground">{tech.name}</span>
                   </div>
                 ))}
               </div>

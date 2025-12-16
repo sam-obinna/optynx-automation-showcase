@@ -61,27 +61,27 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Dark Mode - Improved Contrast */
-    --background: 0 0% 7%;
-    --foreground: 0 0% 98%;
+    /* Dark Mode - Deep Purple/Blue Theme */
+    --background: 240 25% 8%;
+    --foreground: 240 10% 98%;
 
-    --card: 0 0% 12%;
-    --card-foreground: 0 0% 98%;
+    --card: 240 20% 12%;
+    --card-foreground: 240 10% 98%;
 
-    --popover: 0 0% 12%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 240 20% 12%;
+    --popover-foreground: 240 10% 98%;
 
     --primary: 15 100% 55%;
     --primary-foreground: 0 0% 100%;
     --primary-dark: 15 100% 45%;
     --primary-glow: 15 100% 65%;
 
-    --secondary: 0 0% 25%;
+    --secondary: 220 15% 30%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-dark: 0 0% 15%;
+    --secondary-dark: 220 15% 20%;
 
-    --muted: 0 0% 18%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 220 10% 70%;
 
     --accent: 25 100% 60%;
     --accent-foreground: 0 0% 100%;
@@ -89,14 +89,14 @@ All colors MUST be HSL.
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 25%;
-    --input: 0 0% 20%;
-    --ring: 15 100% 55%;
+    --border: 240 20% 22%;
+    --input: 240 20% 20%;
+    --ring: 270 80% 65%;
     
     /* Dark Shadows */
-    --shadow-glass: 0 8px 32px 0 rgba(255, 79, 0, 0.15);
-    --shadow-glow: 0 0 50px rgba(255, 79, 0, 0.3);
-    --shadow-elevated: 0 20px 60px -15px rgba(255, 79, 0, 0.25);
+    --shadow-glass: 0 8px 32px 0 rgba(255, 79, 0, 0.2);
+    --shadow-glow: 0 0 50px rgba(255, 79, 0, 0.4);
+    --shadow-elevated: 0 20px 60px -15px rgba(255, 79, 0, 0.35);
 
     --sidebar-background: 240 25% 10%;
     --sidebar-foreground: 240 10% 95.9%;
@@ -116,22 +116,5 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-@layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#cc3d00] via-[#ff5500] to-[#ffaa66];
-  }
-  
-  .icon-gradient {
-    @apply text-transparent;
-    background: linear-gradient(135deg, #ff4f00 0%, #ff8c42 50%, #ffb366 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-  
-  .icon-container-gradient {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
   }
 }

@@ -25,84 +25,63 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 w-full z-50 backdrop-blur-xl bg-background/70 border-b border-border/50 shadow-glass">
-      <div className="container mx-auto px-3 sm:px-4 py-2.5 sm:py-3">
+      <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          
-          {/* Logo with Favicon */}
-          <a href="#home" className="flex items-center gap-2 group">
-            <img 
-              src="/favicon.png" 
-              alt="OpTynx Logo" 
-              className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg"
-            />
-
-            <span className="text-lg sm:text-xl font-bold text-gradient transition-all duration-300">
+          {/* Logo */}
+          <a href="#home" className="flex items-center gap-3 group">
+            <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center font-bold text-white text-xl shadow-elevated group-hover:scale-110 transition-transform duration-300">
+              <span className="relative z-10">OT</span>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent via-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               OpTynx
             </span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-6">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-foreground/80 hover:text-foreground font-medium transition-all duration-300 relative group"
+                className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 relative group"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#ff4f00] to-[#ff8c42] group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
-
-            <Button
-              asChild
-              size="sm"
-              className="bg-[#FF4000] text-white hover:bg-[#e33a00] transition-all duration-300 shadow-glass border-0 rounded-full px-4 text-sm"
-            >
-              <a 
-                href="https://cal.com/samuel-obinna-nwafor-gvyquk/optnx"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <Button asChild className="bg-gradient-to-r from-primary to-secondary text-white hover:scale-105 transition-all duration-300 shadow-glass border-0 rounded-full px-6">
+              <a href="https://cal.com/samuel-obinna-nwafor-gvyquk/optnx" target="_blank" rel="noopener noreferrer">
                 Get Started
               </a>
             </Button>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-1.5 rounded-lg backdrop-blur-xl bg-card/60 border border-border/50"
+            className="md:hidden p-2 rounded-xl backdrop-blur-xl bg-card/60 border border-border/50"
           >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden mt-3 pb-3 animate-fade-in">
-            <div className="flex flex-col gap-2">
+          <div className="md:hidden mt-6 pb-6 animate-fade-in">
+            <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-sm text-foreground/80 hover:text-foreground font-medium px-3 py-2 rounded-lg backdrop-blur-xl bg-card/40 border border-border/30 hover:border-[#ff4f00]/50 transition-all duration-300"
+                  className="text-foreground/80 hover:text-foreground font-medium px-4 py-3 rounded-xl backdrop-blur-xl bg-card/40 border border-border/30 hover:border-primary/50 transition-all duration-300"
                 >
                   {link.label}
                 </a>
               ))}
-
-              <Button
-                asChild
-                size="sm"
-                className="bg-[#FF4000] text-white hover:bg-[#e33a00] transition-all duration-300 shadow-glass border-0 rounded-lg text-sm"
-              >
-                <a 
-                  href="https://cal.com/samuel-obinna-nwafor-gvyquk/optnx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              <Button asChild className="bg-gradient-to-r from-primary to-secondary text-white hover:scale-105 transition-all duration-300 shadow-glass border-0 rounded-xl">
+                <a href="https://cal.com/samuel-obinna-nwafor-gvyquk/optnx" target="_blank" rel="noopener noreferrer">
                   Get Started
                 </a>
               </Button>
