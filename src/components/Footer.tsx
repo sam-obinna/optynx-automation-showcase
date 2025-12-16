@@ -66,7 +66,7 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="https://cal.com/samuel-obinna-nwafor-gvyquk/optnx" 
+                  href="https://cal.com/samuel-optynx/30min" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"

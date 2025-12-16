@@ -65,7 +65,7 @@ const Navigation = () => {
               </a>
             ))}
             <Button asChild className="bg-gradient-to-r from-primary to-secondary text-white hover:scale-105 transition-all duration-300 shadow-glass border-0 rounded-full px-4 xl:px-6 text-sm">
-              <a href="https://cal.com/samuel-obinna-nwafor-gvyquk/optnx" target="_blank" rel="noopener noreferrer">
+              <a href="https://cal.com/samuel-optynx/30min" target="_blank" rel="noopener noreferrer">
                 Get Started
               </a>
             </Button>

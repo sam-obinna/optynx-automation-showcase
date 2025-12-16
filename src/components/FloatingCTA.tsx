@@ -44,7 +44,7 @@ const FloatingCTA = () => {
         }}
       >
         <a 
-          href="https://cal.com/samuel-obinna-nwafor-gvyquk/optnx" 
+          href="https://cal.com/samuel-optynx/30min" 
           target="_blank" 
           rel="noopener noreferrer"
           style={{

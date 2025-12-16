@@ -83,7 +83,7 @@ const Hero = () => {
 
         {/* CTA Button */}
         <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary-dark text-lg px-10 py-7 rounded-full hover:scale-105 transition-all duration-300 shadow-elevated hover:shadow-glow mb-16">
-          <a href="https://cal.com/samuel-obinna-nwafor-gvyquk/optnx" target="_blank" rel="noopener noreferrer">
+          <a href="https://cal.com/samuel-optynx/30min" target="_blank" rel="noopener noreferrer">
             Book Free Strategy Call →
           </a>
         </Button>

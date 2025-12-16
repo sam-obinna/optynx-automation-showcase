@@ -23,7 +23,7 @@ const CTA = () => {
           className="bg-white text-primary hover:bg-white/90 text-sm md:text-lg px-6 md:px-8 py-5 md:py-6 shadow-2xl hover:scale-105 transition-transform animate-fade-in"
           style={{ animationDelay: '0.2s' }}
         >
-          <a href="https://cal.com/samuel-obinna-nwafor-gvyquk/optnx" target="_blank" rel="noopener noreferrer">
+          <a href="https://cal.com/samuel-optynx/30min" target="_blank" rel="noopener noreferrer">
             Book Your Free Strategy Call →
           </a>
         </Button>
