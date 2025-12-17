@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, Briefcase } from "lucide-react";
 import { Button } from "./ui/button";
 
 const portfolioItems = [
@@ -76,96 +76,128 @@ const Portfolio = () => {
     setFlipped(flipped === index ? null : index);
   };
 
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   return (
-    <section id="portfolio" className="py-12 md:py-24 px-3 md:px-4 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
-      <div className="container mx-auto">
-        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-2 md:mb-4">Our Work</h2>
-        <p className="text-sm md:text-base text-muted-foreground text-center mb-6 md:mb-12 max-w-2xl mx-auto px-2">
-          Real automation solutions delivering measurable results
-        </p>
+    <section id="portfolio" className="py-16 md:py-28 px-4 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-background"></div>
+      <div className="absolute inset-0 bg-dot-pattern opacity-[0.3]"></div>
+      
+      <div className="container mx-auto relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-10 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <Briefcase className="w-4 h-4 text-primary" />
+            <span className="text-sm font-semibold text-primary">PORTFOLIO</span>
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Our Work</h2>
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Real automation solutions delivering measurable results
+          </p>
+        </div>
 
         {/* Carousel Container */}
-        <div className="relative max-w-6xl mx-auto">
-          {/* Navigation Arrows - Hidden on mobile, inline on tablet+ */}
-          {currentIndex > 0 && (
-            <Button
-              variant="outline"
-              size="icon"
-              className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 bg-background shadow-lg hover:scale-110 w-10 h-10"
-              onClick={prevSlide}
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </Button>
-          )}
-          {currentIndex < portfolioItems.length - 1 && (
-            <Button
-              variant="outline"
-              size="icon"
-              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 bg-background shadow-lg hover:scale-110 w-10 h-10"
-              onClick={nextSlide}
-            >
-              <ChevronRight className="w-5 h-5" />
-            </Button>
-          )}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Navigation Arrows - Desktop */}
+          <Button
+            variant="outline"
+            size="icon"
+            className={`hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-16 z-10 w-12 h-12 rounded-full bg-card border-border transition-smooth ${
+              currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary hover:text-white hover:border-primary'
+            }`}
+            onClick={prevSlide}
+            disabled={currentIndex === 0}
+            style={{ boxShadow: 'var(--shadow-md)' }}
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            className={`hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-16 z-10 w-12 h-12 rounded-full bg-card border-border transition-smooth ${
+              currentIndex === portfolioItems.length - 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary hover:text-white hover:border-primary'
+            }`}
+            onClick={nextSlide}
+            disabled={currentIndex === portfolioItems.length - 1}
+            style={{ boxShadow: 'var(--shadow-md)' }}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </Button>
 
           {/* Portfolio Card */}
           <div className="perspective-1000">
             <div
-              className={`relative w-full h-[350px] sm:h-[400px] md:h-[500px] lg:h-[600px] transition-transform duration-500 transform-style-3d cursor-pointer ${
+              className={`relative w-full aspect-[4/3] md:aspect-[16/10] transition-transform duration-500 transform-style-3d cursor-pointer ${
                 flipped === currentIndex ? "rotate-y-180" : ""
               }`}
               onClick={() => handleCardClick(currentIndex)}
             >
               {/* Front */}
-              <div className="absolute inset-0 backface-hidden rounded-xl md:rounded-2xl overflow-hidden shadow-2xl">
+              <div 
+                className="absolute inset-0 backface-hidden rounded-2xl md:rounded-3xl overflow-hidden"
+                style={{ boxShadow: 'var(--shadow-xl)' }}
+              >
                 <img
                   src={portfolioItems[currentIndex].image}
                   alt={portfolioItems[currentIndex].title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                <div className="absolute top-4 md:top-8 left-4 md:left-8 right-4 md:right-8">
-                  <div className="inline-block px-3 md:px-4 py-1.5 md:py-2 bg-primary rounded-full text-xs md:text-sm font-medium mb-2 md:mb-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute top-5 md:top-8 left-5 md:left-8 right-5 md:right-8">
+                  <div className="inline-block px-3 md:px-4 py-1.5 bg-primary rounded-full text-xs md:text-sm font-medium text-white mb-3">
                     {portfolioItems[currentIndex].category}
                   </div>
-                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white drop-shadow-lg">
+                  <h3 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg">
                     {portfolioItems[currentIndex].title}
                   </h3>
                 </div>
-                <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 right-4 md:right-8 text-white text-xs md:text-sm">
-                  Click to see details →
+                <div className="absolute bottom-5 md:bottom-8 left-5 md:left-8 right-5 md:right-8">
+                  <span className="text-white/80 text-sm md:text-base font-medium">
+                    Tap to see details →
+                  </span>
                 </div>
               </div>
 
               {/* Back */}
-              <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-card border border-border p-4 md:p-8 flex flex-col justify-center">
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-6">{portfolioItems[currentIndex].title}</h3>
-                <div className="space-y-2 md:space-y-4">
+              <div 
+                className="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl md:rounded-3xl overflow-hidden bg-card border border-border p-6 md:p-10 flex flex-col justify-center"
+                style={{ boxShadow: 'var(--shadow-xl)' }}
+              >
+                <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold mb-6">{portfolioItems[currentIndex].title}</h3>
+                <div className="space-y-4 md:space-y-6">
                   <div>
-                    <h4 className="text-primary font-semibold mb-1 md:mb-2 text-sm md:text-base">Problem</h4>
-                    <p className="text-muted-foreground text-xs md:text-base">{portfolioItems[currentIndex].problem}</p>
+                    <h4 className="text-primary font-semibold mb-2 text-sm md:text-base uppercase tracking-wide">Problem</h4>
+                    <p className="text-muted-foreground text-sm md:text-base">{portfolioItems[currentIndex].problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-primary font-semibold mb-1 md:mb-2 text-sm md:text-base">Solution</h4>
-                    <p className="text-muted-foreground text-xs md:text-base">{portfolioItems[currentIndex].solution}</p>
+                    <h4 className="text-primary font-semibold mb-2 text-sm md:text-base uppercase tracking-wide">Solution</h4>
+                    <p className="text-muted-foreground text-sm md:text-base">{portfolioItems[currentIndex].solution}</p>
                   </div>
                   <div>
-                    <h4 className="text-primary font-semibold mb-1 md:mb-2 text-sm md:text-base">Results</h4>
-                    <p className="text-foreground font-medium text-xs md:text-base">{portfolioItems[currentIndex].results}</p>
+                    <h4 className="text-primary font-semibold mb-2 text-sm md:text-base uppercase tracking-wide">Results</h4>
+                    <p className="text-foreground font-semibold text-sm md:text-lg">{portfolioItems[currentIndex].results}</p>
                   </div>
                 </div>
-                <p className="text-xs md:text-sm text-muted-foreground mt-3 md:mt-6">Click to flip back</p>
+                <p className="text-sm text-muted-foreground mt-6">Tap to flip back</p>
               </div>
             </div>
           </div>
 
           {/* Mobile Navigation Buttons */}
-          <div className="flex md:hidden justify-center gap-4 mt-4">
+          <div className="flex md:hidden justify-center gap-4 mt-6">
             <Button
               variant="outline"
               size="icon"
-              className="w-10 h-10"
+              className="w-11 h-11 rounded-full"
               onClick={prevSlide}
               disabled={currentIndex === 0}
             >
@@ -174,7 +206,7 @@ const Portfolio = () => {
             <Button
               variant="outline"
               size="icon"
-              className="w-10 h-10"
+              className="w-11 h-11 rounded-full"
               onClick={nextSlide}
               disabled={currentIndex === portfolioItems.length - 1}
             >
@@ -183,13 +215,15 @@ const Portfolio = () => {
           </div>
 
           {/* Dot Indicators */}
-          <div className="flex justify-center gap-1.5 md:gap-2 mt-4 md:mt-8">
+          <div className="flex justify-center gap-2 mt-6 md:mt-10">
             {portfolioItems.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? "bg-primary w-5 md:w-8" : "bg-border hover:bg-primary/50"
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? "bg-primary w-8" 
+                    : "bg-border w-2 hover:bg-primary/50"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -200,7 +234,7 @@ const Portfolio = () => {
 
       <style>{`
         .perspective-1000 {
-          perspective: 1000px;
+          perspective: 1200px;
         }
         .transform-style-3d {
           transform-style: preserve-3d;
