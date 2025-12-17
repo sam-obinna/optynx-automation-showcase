@@ -1,34 +1,47 @@
 import { Button } from "./ui/button";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 const CTA = () => {
   return (
-    <section id="contact" className="py-12 md:py-24 px-3 md:px-4 bg-gradient-to-br from-primary via-secondary to-accent text-white relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-28 px-4 relative overflow-hidden">
+      {/* Background with gradient */}
+      <div className="absolute inset-0 bg-secondary"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20"></div>
+      
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-5 md:left-10 w-32 md:w-64 h-32 md:h-64 bg-white rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-10 right-5 md:right-10 w-48 md:w-96 h-48 md:h-96 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-      </div>
+      <div className="absolute top-10 left-[10%] w-64 md:w-80 h-64 md:h-80 bg-primary/10 rounded-full blur-[100px] animate-float" />
+      <div className="absolute bottom-10 right-[10%] w-80 md:w-96 h-80 md:h-96 bg-accent/10 rounded-full blur-[120px] animate-float" style={{ animationDelay: '2s' }} />
 
       <div className="container mx-auto max-w-4xl text-center relative z-10">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 animate-fade-in px-2">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-8 backdrop-blur-sm animate-fade-in">
+          <Sparkles className="w-4 h-4 text-white" />
+          <span className="text-sm font-semibold text-white">FREE CONSULTATION</span>
+        </div>
+
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white animate-fade-in" style={{ animationDelay: '0.1s' }}>
           Ready to Automate Your Business?
         </h2>
-        <p className="text-sm md:text-lg lg:text-xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto leading-relaxed animate-fade-in px-2" style={{ animationDelay: '0.1s' }}>
+        
+        <p className="text-base md:text-lg lg:text-xl mb-10 text-white/80 max-w-2xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
           Stop wasting time on repetitive tasks. Let's build automation systems that free your team to focus on what matters most.
         </p>
         
-        <Button 
-          asChild 
-          size="lg" 
-          className="bg-white text-primary hover:bg-white/90 text-sm md:text-lg px-6 md:px-8 py-5 md:py-6 shadow-2xl hover:scale-105 transition-transform animate-fade-in"
-          style={{ animationDelay: '0.2s' }}
-        >
-          <a href="https://cal.com/samuel-optynx/30min" target="_blank" rel="noopener noreferrer">
-            Book Your Free Strategy Call →
-          </a>
-        </Button>
+        <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <Button 
+            asChild 
+            size="lg" 
+            className="bg-white text-secondary hover:bg-white/90 text-base md:text-lg px-8 md:px-10 py-6 md:py-7 rounded-full transition-smooth group"
+            style={{ boxShadow: '0 20px 60px -15px rgba(0, 0, 0, 0.3)' }}
+          >
+            <a href="https://cal.com/samuel-optynx/30min" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              Book Your Free Strategy Call
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </Button>
+        </div>
 
-        <p className="mt-4 md:mt-6 text-xs md:text-sm opacity-75 animate-fade-in px-2" style={{ animationDelay: '0.3s' }}>
+        <p className="mt-6 text-sm text-white/60 animate-fade-in" style={{ animationDelay: '0.4s' }}>
           No obligation • 30-minute consultation • Custom automation roadmap
         </p>
       </div>
