@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,32 +17,35 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
+  const navLinks = isHomePage ? [
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#services", label: "Services" },
     { href: "#portfolio", label: "Portfolio" },
     { href: "#testimonials", label: "Testimonials" },
     { href: "#contact", label: "Contact" },
+  ] : [
+    { href: "/", label: "Home", isLink: true },
+    { href: "/projects", label: "Projects", isLink: true },
   ];
 
   return (
     <nav 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-background/95 backdrop-blur-xl border-b border-border' 
-          : 'bg-transparent'
+          ? 'bg-background/95 backdrop-blur-xl border-b border-border py-3' 
+          : 'bg-transparent py-4'
       }`}
       style={{ boxShadow: isScrolled ? 'var(--shadow-sm)' : 'none' }}
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2.5 group">
+          <Link to="/" className="flex items-center gap-2.5 group">
             <svg 
               viewBox="0 0 100 100" 
               xmlns="http://www.w3.org/2000/svg" 
-              className="w-10 h-10 md:w-11 md:h-11"
+              className="w-10 h-10 md:w-11 md:h-11 group-hover:scale-105 transition-transform"
             >
               <path 
                 d="M50 35 L54 20 L46 20 Z M50 65 L54 80 L46 80 Z M65 50 L80 54 L80 46 Z M35 50 L20 54 L20 46 Z" 
@@ -56,19 +62,41 @@ const Navigation = () => {
             <span className="font-display text-xl md:text-2xl font-bold text-primary">
               OpTynx
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+              link.isLink ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={`px-4 py-2 font-medium transition-all text-sm rounded-lg ${
+                    location.pathname === link.href 
+                      ? 'text-primary bg-primary/10' 
+                      : 'text-foreground/70 hover:text-foreground hover:bg-muted/50'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="px-4 py-2 text-foreground/70 hover:text-foreground font-medium transition-colors text-sm rounded-lg hover:bg-muted/50"
+                >
+                  {link.label}
+                </a>
+              )
+            ))}
+            {isHomePage && (
+              <Link
+                to="/projects"
                 className="px-4 py-2 text-foreground/70 hover:text-foreground font-medium transition-colors text-sm rounded-lg hover:bg-muted/50"
               >
-                {link.label}
-              </a>
-            ))}
+                Projects
+              </Link>
+            )}
           </div>
 
           {/* Desktop CTA */}
@@ -87,7 +115,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg bg-muted/50 border border-border"
+            className="lg:hidden p-2.5 rounded-xl bg-muted/50 border border-border hover:bg-muted transition-colors"
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -98,17 +126,41 @@ const Navigation = () => {
           <div className="lg:hidden mt-4 pb-4 animate-fade-in">
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
+                link.isLink ? (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`font-medium px-4 py-3 rounded-lg transition-colors ${
+                      location.pathname === link.href 
+                        ? 'text-primary bg-primary/10' 
+                        : 'text-foreground/80 hover:text-foreground hover:bg-muted/50'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-foreground/80 hover:text-foreground font-medium px-4 py-3 rounded-lg hover:bg-muted/50 transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                )
+              ))}
+              {isHomePage && (
+                <Link
+                  to="/projects"
                   onClick={() => setIsOpen(false)}
                   className="text-foreground/80 hover:text-foreground font-medium px-4 py-3 rounded-lg hover:bg-muted/50 transition-colors"
                 >
-                  {link.label}
-                </a>
-              ))}
+                  Projects
+                </Link>
+              )}
               <div className="mt-3 pt-3 border-t border-border">
-                <Button asChild className="w-full bg-primary text-white hover:bg-primary-dark rounded-lg">
+                <Button asChild className="w-full bg-primary text-white hover:bg-primary-dark rounded-xl">
                   <a href="https://cal.com/samuel-optynx/30min" target="_blank" rel="noopener noreferrer">
                     Get Started
                   </a>

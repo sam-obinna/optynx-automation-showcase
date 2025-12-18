@@ -1,75 +1,36 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Briefcase } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ChevronLeft, ChevronRight, Briefcase, ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
-
-const portfolioItems = [
-  {
-    title: "Order Processing System",
-    category: "E-commerce",
-    image: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&h=600&fit=crop",
-    problem: "Manual order processing taking 4 hours daily",
-    solution: "Automated Shopify-to-fulfillment pipeline with real-time tracking",
-    results: "95% time saved, zero processing errors"
-  },
-  {
-    title: "Employee Onboarding Portal",
-    category: "Human Resources",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
-    problem: "Inconsistent onboarding experience across departments",
-    solution: "Custom portal with automated document collection and training schedules",
-    results: "70% faster onboarding, 100% compliance"
-  },
-  {
-    title: "AI Lead Scoring System",
-    category: "Marketing",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    problem: "Sales team wasting time on unqualified leads",
-    solution: "ML-powered lead scoring with CRM integration",
-    results: "40% increase in conversion rates"
-  },
-  {
-    title: "Automated Financial Dashboard",
-    category: "Finance",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-    problem: "Manual data aggregation from multiple sources",
-    solution: "Real-time dashboard pulling from QuickBooks, Stripe, and banking APIs",
-    results: "Instant financial visibility, 10 hours/week saved"
-  },
-  {
-    title: "Supply Chain Optimizer",
-    category: "Logistics",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop",
-    problem: "Inefficient inventory management causing stockouts",
-    solution: "Predictive inventory system with automated reordering",
-    results: "30% reduction in carrying costs"
-  },
-  {
-    title: "24/7 Support Chatbot",
-    category: "Customer Service",
-    image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=600&fit=crop",
-    problem: "Limited support hours leading to customer frustration",
-    solution: "AI chatbot handling common queries with human escalation",
-    results: "85% query resolution, 24/7 availability"
-  }
-];
+import { portfolioItems } from "@/data/portfolioData";
 
 const Portfolio = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flipped, setFlipped] = useState<number | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const nextSlide = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
     setCurrentIndex((prev) => (prev + 1) % portfolioItems.length);
     setFlipped(null);
+    setTimeout(() => setIsAnimating(false), 500);
   };
 
   const prevSlide = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
     setCurrentIndex((prev) => (prev - 1 + portfolioItems.length) % portfolioItems.length);
     setFlipped(null);
+    setTimeout(() => setIsAnimating(false), 500);
   };
 
   const goToSlide = (index: number) => {
+    if (isAnimating || index === currentIndex) return;
+    setIsAnimating(true);
     setCurrentIndex(index);
     setFlipped(null);
+    setTimeout(() => setIsAnimating(false), 500);
   };
 
   const handleCardClick = (index: number) => {
@@ -84,23 +45,39 @@ const Portfolio = () => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [isAnimating]);
+
+  // Auto-advance carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (flipped === null) {
+        nextSlide();
+      }
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [flipped]);
+
+  const currentProject = portfolioItems[currentIndex];
 
   return (
-    <section id="portfolio" className="py-16 md:py-28 px-4 relative overflow-hidden">
+    <section id="portfolio" className="py-20 md:py-32 px-4 relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-background"></div>
+      <div className="absolute inset-0 bg-muted/30"></div>
       <div className="absolute inset-0 bg-dot-pattern opacity-[0.3]"></div>
+      <div className="absolute top-1/4 left-[5%] w-[400px] h-[400px] bg-primary/5 rounded-full blur-[150px]"></div>
       
       <div className="container mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-10 md:mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+        <div className="text-center mb-12 md:mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 animate-fade-in">
             <Briefcase className="w-4 h-4 text-primary" />
             <span className="text-sm font-semibold text-primary">PORTFOLIO</span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Our Work</h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            Our{" "}
+            <span className="text-gradient">Work</span>
+          </h2>
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
             Real automation solutions delivering measurable results
           </p>
         </div>
@@ -111,32 +88,32 @@ const Portfolio = () => {
           <Button
             variant="outline"
             size="icon"
-            className={`hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-16 z-10 w-12 h-12 rounded-full bg-card border-border transition-smooth ${
-              currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary hover:text-white hover:border-primary'
+            className={`hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-20 z-10 w-14 h-14 rounded-full bg-card border-border transition-smooth ${
+              isAnimating ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary hover:text-white hover:border-primary hover:scale-110'
             }`}
             onClick={prevSlide}
-            disabled={currentIndex === 0}
-            style={{ boxShadow: 'var(--shadow-md)' }}
+            disabled={isAnimating}
+            style={{ boxShadow: 'var(--shadow-lg)' }}
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-6 h-6" />
           </Button>
           <Button
             variant="outline"
             size="icon"
-            className={`hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-16 z-10 w-12 h-12 rounded-full bg-card border-border transition-smooth ${
-              currentIndex === portfolioItems.length - 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary hover:text-white hover:border-primary'
+            className={`hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-20 z-10 w-14 h-14 rounded-full bg-card border-border transition-smooth ${
+              isAnimating ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary hover:text-white hover:border-primary hover:scale-110'
             }`}
             onClick={nextSlide}
-            disabled={currentIndex === portfolioItems.length - 1}
-            style={{ boxShadow: 'var(--shadow-md)' }}
+            disabled={isAnimating}
+            style={{ boxShadow: 'var(--shadow-lg)' }}
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-6 h-6" />
           </Button>
 
           {/* Portfolio Card */}
           <div className="perspective-1000">
             <div
-              className={`relative w-full aspect-[4/3] md:aspect-[16/10] transition-transform duration-500 transform-style-3d cursor-pointer ${
+              className={`relative w-full aspect-[4/3] md:aspect-[16/10] transition-all duration-500 ease-out transform-style-3d cursor-pointer ${
                 flipped === currentIndex ? "rotate-y-180" : ""
               }`}
               onClick={() => handleCardClick(currentIndex)}
@@ -147,23 +124,31 @@ const Portfolio = () => {
                 style={{ boxShadow: 'var(--shadow-xl)' }}
               >
                 <img
-                  src={portfolioItems[currentIndex].image}
-                  alt={portfolioItems[currentIndex].title}
-                  className="w-full h-full object-cover"
+                  src={currentProject.image}
+                  alt={currentProject.title}
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute top-5 md:top-8 left-5 md:left-8 right-5 md:right-8">
                   <div className="inline-block px-3 md:px-4 py-1.5 bg-primary rounded-full text-xs md:text-sm font-medium text-white mb-3">
-                    {portfolioItems[currentIndex].category}
+                    {currentProject.category}
                   </div>
                   <h3 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg">
-                    {portfolioItems[currentIndex].title}
+                    {currentProject.title}
                   </h3>
                 </div>
-                <div className="absolute bottom-5 md:bottom-8 left-5 md:left-8 right-5 md:right-8">
+                <div className="absolute bottom-5 md:bottom-8 left-5 md:left-8 right-5 md:right-8 flex items-center justify-between">
                   <span className="text-white/80 text-sm md:text-base font-medium">
                     Tap to see details →
                   </span>
+                  <Link 
+                    to={`/projects?project=${currentProject.id}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium hover:bg-white/30 transition-colors"
+                  >
+                    View Full Case
+                    <ExternalLink className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
 
@@ -172,22 +157,32 @@ const Portfolio = () => {
                 className="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl md:rounded-3xl overflow-hidden bg-card border border-border p-6 md:p-10 flex flex-col justify-center"
                 style={{ boxShadow: 'var(--shadow-xl)' }}
               >
-                <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold mb-6">{portfolioItems[currentIndex].title}</h3>
+                <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold mb-6">{currentProject.title}</h3>
                 <div className="space-y-4 md:space-y-6">
-                  <div>
-                    <h4 className="text-primary font-semibold mb-2 text-sm md:text-base uppercase tracking-wide">Problem</h4>
-                    <p className="text-muted-foreground text-sm md:text-base">{portfolioItems[currentIndex].problem}</p>
+                  <div className="p-4 rounded-xl bg-destructive/5 border border-destructive/20">
+                    <h4 className="text-destructive font-semibold mb-2 text-sm md:text-base uppercase tracking-wide">Problem</h4>
+                    <p className="text-muted-foreground text-sm md:text-base">{currentProject.problem}</p>
                   </div>
-                  <div>
+                  <div className="p-4 rounded-xl bg-primary/5 border border-primary/20">
                     <h4 className="text-primary font-semibold mb-2 text-sm md:text-base uppercase tracking-wide">Solution</h4>
-                    <p className="text-muted-foreground text-sm md:text-base">{portfolioItems[currentIndex].solution}</p>
+                    <p className="text-muted-foreground text-sm md:text-base">{currentProject.solution}</p>
                   </div>
-                  <div>
-                    <h4 className="text-primary font-semibold mb-2 text-sm md:text-base uppercase tracking-wide">Results</h4>
-                    <p className="text-foreground font-semibold text-sm md:text-lg">{portfolioItems[currentIndex].results}</p>
+                  <div className="p-4 rounded-xl bg-green-500/5 border border-green-500/20">
+                    <h4 className="text-green-600 font-semibold mb-2 text-sm md:text-base uppercase tracking-wide">Results</h4>
+                    <p className="text-foreground font-semibold text-sm md:text-lg">{currentProject.results}</p>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground mt-6">Tap to flip back</p>
+                <div className="flex items-center justify-between mt-6">
+                  <p className="text-sm text-muted-foreground">Tap to flip back</p>
+                  <Link 
+                    to={`/projects?project=${currentProject.id}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex items-center gap-2 text-primary font-medium text-sm hover:gap-3 transition-all"
+                  >
+                    View Full Case Study
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -197,38 +192,48 @@ const Portfolio = () => {
             <Button
               variant="outline"
               size="icon"
-              className="w-11 h-11 rounded-full"
+              className="w-12 h-12 rounded-full"
               onClick={prevSlide}
-              disabled={currentIndex === 0}
+              disabled={isAnimating}
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
             <Button
               variant="outline"
               size="icon"
-              className="w-11 h-11 rounded-full"
+              className="w-12 h-12 rounded-full"
               onClick={nextSlide}
-              disabled={currentIndex === portfolioItems.length - 1}
+              disabled={isAnimating}
             >
               <ChevronRight className="w-5 h-5" />
             </Button>
           </div>
 
           {/* Dot Indicators */}
-          <div className="flex justify-center gap-2 mt-6 md:mt-10">
+          <div className="flex justify-center gap-2 mt-8 md:mt-12">
             {portfolioItems.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`h-2.5 rounded-full transition-all duration-300 ${
                   index === currentIndex 
-                    ? "bg-primary w-8" 
-                    : "bg-border w-2 hover:bg-primary/50"
+                    ? "bg-primary w-10" 
+                    : "bg-border w-2.5 hover:bg-primary/50"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
+        </div>
+
+        {/* View All Projects Link */}
+        <div className="text-center mt-12 md:mt-16">
+          <Link to="/projects">
+            <Button variant="outline" size="lg" className="rounded-full group">
+              <span>View All Projects</span>
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
         </div>
       </div>
 
