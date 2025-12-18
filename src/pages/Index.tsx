@@ -8,6 +8,7 @@ import Integrations from "@/components/Integrations";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
+import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 
@@ -23,6 +24,7 @@ const Index = () => {
       <Services />
       <Testimonials />
       <FAQ />
+      <Newsletter />
       <CTA />
       <Footer />
       <FloatingCTA />
