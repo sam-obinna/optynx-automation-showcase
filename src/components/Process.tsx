@@ -1,4 +1,4 @@
-import { Search, PenTool, Rocket, TrendingUp, Workflow } from "lucide-react";
+import { Search, PenTool, Rocket, TrendingUp, Workflow, ArrowRight } from "lucide-react";
 
 const Process = () => {
   const steps = [
@@ -6,104 +6,129 @@ const Process = () => {
       number: "01",
       icon: Search,
       title: "Discovery",
-      description: "We analyze your workflows to identify automation opportunities and understand your unique challenges.",
+      description: "We analyze your current workflows, identify bottlenecks, and uncover automation opportunities that will have the biggest impact on your business.",
+      color: "from-blue-500 to-cyan-500"
     },
     {
       number: "02",
       icon: PenTool,
       title: "Design",
-      description: "We create a custom automation blueprint tailored to your specific business needs and goals.",
+      description: "We create a custom automation blueprint tailored to your specific needs, mapping out every integration and workflow with precision.",
+      color: "from-purple-500 to-pink-500"
     },
     {
       number: "03",
       icon: Rocket,
       title: "Implementation",
-      description: "We build, test, and deploy your automation system with minimal disruption to your operations.",
+      description: "We build, test, and deploy your automation system with minimal disruption, ensuring everything runs smoothly from day one.",
+      color: "from-primary to-accent"
     },
     {
       number: "04",
       icon: TrendingUp,
       title: "Optimization",
-      description: "We monitor performance and continuously refine your automations for maximum efficiency.",
+      description: "We monitor performance, gather insights, and continuously refine your automations to maximize efficiency and ROI.",
+      color: "from-green-500 to-emerald-500"
     },
   ];
 
   return (
-    <section className="py-16 md:py-28 px-4 relative overflow-hidden">
+    <section id="process" className="py-24 md:py-32 px-4 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-muted/30"></div>
-      <div className="absolute inset-0 bg-dot-pattern opacity-[0.3]"></div>
-      <div className="absolute top-1/3 right-[10%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[150px]"></div>
+      <div className="absolute inset-0 bg-dot-pattern opacity-20"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/3 rounded-full blur-[200px]"></div>
       
       <div className="container mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
+        <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6 animate-fade-in">
             <Workflow className="w-4 h-4 text-accent" />
-            <span className="text-sm font-semibold text-accent">OUR PROCESS</span>
+            <span className="text-sm font-semibold text-accent uppercase tracking-wide">Our Process</span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
             How We{" "}
-            <span className="text-gradient">Transform</span>{" "}
-            Your Business
+            <span className="text-gradient">Transform</span>
+            <br className="hidden sm:block" />
+            {" "}Your Business
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-            A proven methodology that delivers results every time
+          <p className="text-lg md:text-xl text-muted-foreground animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            A proven 4-step methodology that delivers measurable results every time
           </p>
         </div>
 
-        {/* Process Steps */}
-        <div className="relative max-w-5xl mx-auto">
-          {/* Connecting Line - Desktop */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-accent to-secondary transform -translate-x-1/2"></div>
+        {/* Process Steps - Timeline */}
+        <div className="max-w-5xl mx-auto">
+          <div className="relative">
+            {/* Connecting Line */}
+            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-accent/50 to-green-500/50 -translate-x-1/2"></div>
 
-          <div className="space-y-8 md:space-y-0">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-              const isEven = index % 2 === 0;
+            {/* Steps */}
+            <div className="space-y-8 lg:space-y-0">
+              {steps.map((step, index) => {
+                const Icon = step.icon;
+                const isEven = index % 2 === 0;
 
-              return (
-                <div
-                  key={index}
-                  className={`flex flex-col lg:flex-row items-center gap-6 md:gap-8 lg:gap-12 ${
-                    isEven ? "lg:flex-row" : "lg:flex-row-reverse"
-                  } animate-fade-in`}
-                  style={{ animationDelay: `${index * 0.15}s` }}
-                >
-                  {/* Content Card */}
-                  <div className={`flex-1 w-full ${isEven ? "lg:text-right" : "lg:text-left"}`}>
-                    <div 
-                      className="card-elevated p-6 md:p-8 group"
-                    >
-                      <div className={`flex items-center gap-4 mb-5 ${isEven ? "lg:flex-row-reverse" : ""}`}>
-                        {/* Step Number */}
-                        <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-primary flex items-center justify-center text-xl md:text-2xl font-bold text-white font-display group-hover:scale-110 transition-smooth">
-                          {step.number}
+                return (
+                  <div
+                    key={index}
+                    className={`relative flex flex-col lg:flex-row items-center gap-8 lg:gap-16 animate-fade-in ${
+                      isEven ? '' : 'lg:flex-row-reverse'
+                    }`}
+                    style={{ animationDelay: `${index * 0.15}s` }}
+                  >
+                    {/* Content */}
+                    <div className={`flex-1 w-full ${isEven ? 'lg:text-right' : 'lg:text-left'}`}>
+                      <div 
+                        className="bg-card border border-border rounded-3xl p-8 group hover:border-primary/30 transition-all duration-500"
+                        style={{ boxShadow: 'var(--shadow-md)' }}
+                      >
+                        <div className={`flex items-center gap-4 mb-6 ${isEven ? 'lg:flex-row-reverse' : ''}`}>
+                          {/* Step Number */}
+                          <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center text-lg font-bold text-white font-display group-hover:scale-110 transition-transform`}>
+                            {step.number}
+                          </div>
+                          
+                          {/* Icon */}
+                          <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                            <Icon className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
+                          </div>
                         </div>
-                        {/* Icon */}
-                        <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-smooth">
-                          <Icon className="w-6 h-6 md:w-7 md:h-7 text-primary" />
-                        </div>
+
+                        <h3 className="font-display text-2xl md:text-3xl font-bold mb-4 group-hover:text-primary transition-colors">
+                          {step.title}
+                        </h3>
+                        
+                        <p className="text-muted-foreground leading-relaxed">
+                          {step.description}
+                        </p>
                       </div>
-                      <h3 className="font-display text-xl md:text-2xl lg:text-3xl font-bold mb-3 group-hover:text-primary transition-colors">
-                        {step.title}
-                      </h3>
-                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                        {step.description}
-                      </p>
                     </div>
-                  </div>
 
-                  {/* Center Dot - Desktop */}
-                  <div className="hidden lg:flex items-center justify-center relative z-10">
-                    <div className="w-4 h-4 rounded-full bg-primary ring-4 ring-background"></div>
-                  </div>
+                    {/* Center Dot */}
+                    <div className="hidden lg:flex items-center justify-center relative z-10">
+                      <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${step.color} ring-4 ring-background shadow-lg`}></div>
+                    </div>
 
-                  {/* Spacer */}
-                  <div className="flex-1 hidden lg:block"></div>
-                </div>
-              );
-            })}
+                    {/* Spacer */}
+                    <div className="flex-1 hidden lg:block"></div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <a 
+              href="https://cal.com/samuel-optynx/30min" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-4 transition-all group"
+            >
+              Start your transformation today
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
           </div>
         </div>
       </div>
