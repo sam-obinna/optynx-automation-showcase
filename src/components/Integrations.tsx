@@ -1,3 +1,4 @@
+import { Plug } from "lucide-react";
 import mondayLogo from "@/assets/tech/monday.svg";
 import airtableLogo from "@/assets/tech/airtable.svg";
 import gdocsLogo from "@/assets/tech/gdocs.svg";
@@ -57,135 +58,94 @@ const Integrations = () => {
     { name: "Dropbox", logo: dropboxLogo },
   ];
 
+  const IntegrationRow = ({ apps, direction = 'left', speed = 45 }: { apps: typeof row1, direction?: 'left' | 'right', speed?: number }) => (
+    <div className="relative overflow-hidden py-2">
+      <div 
+        className={`flex gap-4 md:gap-6 ${direction === 'left' ? 'animate-scroll-left' : 'animate-scroll-right'}`}
+        style={{ '--scroll-speed': `${speed}s` } as React.CSSProperties}
+      >
+        {[...Array(3)].map((_, setIndex) => (
+          <div key={setIndex} className="flex gap-4 md:gap-6 shrink-0">
+            {apps.map((app, i) => (
+              <div
+                key={`${setIndex}-${i}`}
+                className="flex items-center gap-3 md:gap-4 px-5 md:px-8 py-3 md:py-4 bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl whitespace-nowrap hover:border-primary/30 hover:bg-card transition-all duration-300 shrink-0 group cursor-default"
+              >
+                <img 
+                  src={app.logo} 
+                  alt={app.name} 
+                  className="h-7 w-7 md:h-9 md:w-9 object-contain group-hover:scale-110 transition-transform" 
+                />
+                <span className="font-medium text-sm md:text-base text-foreground">{app.name}</span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
-    <section className="py-12 md:py-24 px-3 md:px-4 bg-gradient-to-b from-background to-muted/30 overflow-hidden relative">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
-      <div className="absolute top-1/2 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-accent/10 rounded-full blur-[100px] md:blur-[120px]"></div>
+    <section id="integrations" className="py-24 md:py-32 px-4 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-background to-muted/30"></div>
+      <div className="absolute inset-0 bg-dot-pattern opacity-20"></div>
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] -translate-y-1/2"></div>
+      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[120px] -translate-y-1/2"></div>
       
-      <div className="container mx-auto mb-8 md:mb-16 relative z-10">
-        <div className="inline-block px-4 md:px-6 py-1.5 md:py-2 rounded-full backdrop-blur-xl bg-primary/10 border border-primary/20 mb-4 md:mb-6">
-          <span className="text-xs md:text-sm font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            INTEGRATIONS
-          </span>
+      {/* Header */}
+      <div className="container mx-auto mb-12 md:mb-16 relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 animate-fade-in">
+            <Plug className="w-4 h-4 text-primary" />
+            <span className="text-sm font-semibold text-primary uppercase tracking-wide">Integrations</span>
+          </div>
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            Apps We{" "}
+            <span className="text-gradient">Integrate</span>
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            Seamlessly connect your favorite tools and platforms with our powerful automation solutions
+          </p>
         </div>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6">
-          Business Apps{" "}
-          <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            We Integrate
-          </span>
-        </h2>
-        <p className="text-sm md:text-lg lg:text-xl text-muted-foreground max-w-2xl">
-          Seamlessly connect your favorite tools and platforms with our powerful automation solutions
-        </p>
       </div>
 
-      <div className="space-y-4 md:space-y-8 relative z-10">
-        {/* Row 1 - Left to Right */}
-        <div className="relative overflow-hidden">
-          <div className="flex gap-3 md:gap-6 animate-seamless-scroll-1">
-            {[...Array(3)].map((_, setIndex) => (
-              <div key={setIndex} className="flex gap-3 md:gap-6 shrink-0">
-                {row1.map((app, i) => (
-                  <div
-                    key={`${setIndex}-${i}`}
-                    className="flex items-center gap-2 md:gap-4 px-4 md:px-8 py-3 md:py-5 backdrop-blur-xl bg-card/60 border border-border/50 rounded-xl md:rounded-2xl whitespace-nowrap hover:scale-105 md:hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0 group"
-                  >
-                    <img src={app.logo} alt={app.name} className="h-6 w-6 md:h-10 md:w-10 object-contain group-hover:scale-110 transition-transform" />
-                    <span className="font-semibold text-sm md:text-lg text-foreground">{app.name}</span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* Scrolling Rows */}
+      <div className="space-y-4 md:space-y-6 relative z-10">
+        <IntegrationRow apps={row1} direction="left" speed={50} />
+        <IntegrationRow apps={row2} direction="right" speed={55} />
+        <IntegrationRow apps={row3} direction="left" speed={45} />
+      </div>
 
-        {/* Row 2 - Right to Left */}
-        <div className="relative overflow-hidden">
-          <div className="flex gap-3 md:gap-6 animate-seamless-scroll-reverse">
-            {[...Array(3)].map((_, setIndex) => (
-              <div key={setIndex} className="flex gap-3 md:gap-6 shrink-0">
-                {row2.map((app, i) => (
-                  <div
-                    key={`${setIndex}-${i}`}
-                    className="flex items-center gap-2 md:gap-4 px-4 md:px-8 py-3 md:py-5 backdrop-blur-xl bg-card/60 border border-border/50 rounded-xl md:rounded-2xl whitespace-nowrap hover:scale-105 md:hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0 group"
-                  >
-                    <img src={app.logo} alt={app.name} className="h-6 w-6 md:h-10 md:w-10 object-contain group-hover:scale-110 transition-transform" />
-                    <span className="font-semibold text-sm md:text-lg text-foreground">{app.name}</span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Row 3 - Left to Right */}
-        <div className="relative overflow-hidden">
-          <div className="flex gap-3 md:gap-6 animate-seamless-scroll-2">
-            {[...Array(3)].map((_, setIndex) => (
-              <div key={setIndex} className="flex gap-3 md:gap-6 shrink-0">
-                {row3.map((app, i) => (
-                  <div
-                    key={`${setIndex}-${i}`}
-                    className="flex items-center gap-2 md:gap-4 px-4 md:px-8 py-3 md:py-5 backdrop-blur-xl bg-card/60 border border-border/50 rounded-xl md:rounded-2xl whitespace-nowrap hover:scale-105 md:hover:scale-110 hover:shadow-glass transition-all duration-300 shrink-0 group"
-                  >
-                    <img src={app.logo} alt={app.name} className="h-6 w-6 md:h-10 md:w-10 object-contain group-hover:scale-110 transition-transform" />
-                    <span className="font-semibold text-sm md:text-lg text-foreground">{app.name}</span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
+      {/* Counter */}
+      <div className="container mx-auto mt-12 md:mt-16 relative z-10">
+        <div className="text-center">
+          <span className="text-sm text-muted-foreground">
+            And <span className="text-primary font-bold">200+</span> more integrations available
+          </span>
         </div>
       </div>
 
       <style>{`
-        @keyframes seamless-scroll-1 {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-100% / 3));
-          }
+        @keyframes scroll-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(calc(-100% / 3)); }
         }
-        @keyframes seamless-scroll-2 {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-100% / 3));
-          }
+        @keyframes scroll-right {
+          0% { transform: translateX(calc(-100% / 3)); }
+          100% { transform: translateX(0); }
         }
-        @keyframes seamless-scroll-reverse {
-          0% {
-            transform: translateX(calc(-100% / 3));
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-        .animate-seamless-scroll-1 {
-          animation: seamless-scroll-1 45s linear infinite;
+        .animate-scroll-left {
+          animation: scroll-left var(--scroll-speed, 45s) linear infinite;
           width: max-content;
         }
-        .animate-seamless-scroll-2 {
-          animation: seamless-scroll-2 50s linear infinite;
+        .animate-scroll-right {
+          animation: scroll-right var(--scroll-speed, 45s) linear infinite;
           width: max-content;
         }
-        .animate-seamless-scroll-reverse {
-          animation: seamless-scroll-reverse 48s linear infinite;
-          width: max-content;
-        }
-        .animate-seamless-scroll-1:hover,
-        .animate-seamless-scroll-2:hover,
-        .animate-seamless-scroll-reverse:hover {
+        .animate-scroll-left:hover,
+        .animate-scroll-right:hover {
           animation-play-state: paused;
-        }
-        .bg-grid-pattern {
-          background-image: 
-            linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
-            linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
-          background-size: 40px 40px;
         }
       `}</style>
     </section>
